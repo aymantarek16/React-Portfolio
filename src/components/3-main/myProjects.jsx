@@ -73,14 +73,7 @@ const myProjects = [
     liveDemo: "https://aymantarek16.github.io/Coza-Store/",
     githup: "https://github.com/aymantarek16/Coza-Store",
   },
-  {
-    category: "ui",
-    projectTitle: "Photo Editor",
-    subTitle: "upload any photo of your own and modify it using the appropriate filter for you",
-    imgPath: "./Projects images/ui/Photo Editor.png",
-    liveDemo: "https://photo-editor-app.vercel.app/",
-    githup: "https://github.com/aymantarek16/Photo-Editor-App",
-  },
+
   {
     category: "ui",
     projectTitle: "Jevelin Burger",
@@ -150,23 +143,6 @@ const myProjects = [
     liveDemo: "https://react-food-delivery-app-zeta.vercel.app/home",
     githup: "https://github.com/aymantarek16/react-food-delivery-app",
   },
-  {
-    category: "react",
-    projectTitle: "To Do List",
-    subTitle: "simple card to record your daily tasks with save the latest additions",
-    imgPath: "./Projects images/React.js/To Do List.jpg",
-    liveDemo: "https://aymantarek16.github.io/React-App-To-Do-List/",
-    githup: "https://github.com/aymantarek16/React-App-To-Do-List",
-  },
-  {
-    category: "react",
-    projectTitle: "Watch Shop",
-    subTitle: "Watch Shop interface to display various types of high-end watches",
-    imgPath: "./Projects images/React.js/Watch Shop.jpg",
-    liveDemo: "https://react-watch-shop-nine.vercel.app/",
-    githup: "https://github.com/aymantarek16/react-watch-shop",
-  },
-
 
   // ========================== Next.js Projects ========================== //
   {
