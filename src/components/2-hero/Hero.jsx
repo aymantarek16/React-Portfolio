@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import "./hero.css";
 import devAnimation from "../../animation/dev.json";
 import Lottie from "lottie-react";
@@ -28,13 +29,13 @@ const Hero = () => {
           transition={{ duration: 2, type: "spring", stiffness: 5 }}
           className="title"
         >
-          Software designer, Front end developer.
+          Front-End Developer & UI Designer
         </motion.h1>
         <p className="sub-title">
-          I’m Ayman Tarek, Enthusiastic and skilled front-end developer with
-          3 years of experience in building dynamic and interactive user
-          interfaces using React.js and creating responsive and user-friendly
-          websites, with a strong focus on usability and performance.
+          I'm Ayman Tarek — a passionate front-end developer with 2+ years of
+          experience crafting fast, accessible, and responsive web applications
+          using React.js. I specialize in building clean UI, optimizing
+          performance, and delivering seamless user experiences.
         </p>
 
         <div className="all-icons flex">
@@ -61,16 +62,15 @@ const Hero = () => {
           ></a>
         </div>
 
-        {/* Download Cv */}
+        {/* Download CV */}
         <div className="cv">
           <a
-            href={
-              "https://drive.google.com/file/d/1awjyOvs_LwbZKjPw8XLkpqdtHLMW5_cf/view?usp=sharing"
-            }
+            href="https://drive.google.com/file/d/1pbUbHtpnjqMeXrQpX13knkOlofHWzNVJ/view?usp=drive_link"
             target="_blank"
+            rel="noopener noreferrer"
             className="cvBtn"
           >
-            Download Cv
+            Download CV
           </a>
         </div>
       </div>
