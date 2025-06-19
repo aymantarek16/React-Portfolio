@@ -145,6 +145,14 @@ const myProjects = [
   },
 
   // ========================== Next.js Projects ========================== //
+    {
+    category: "next",
+    projectTitle: "Shedule-app",
+    subTitle: "Modern appointment scheduling app built with Next.js 15 and Tailwind CSS",
+    imgPath: "./Projects images/Next.js/Shedule.png",
+    liveDemo: "https://schedule-app-nh6c.vercel.app/",
+    githup: "https://github.com/aymantarek16/schedule_App",
+  },
   {
     category: "next",
     projectTitle: "Ecommerce",
@@ -153,6 +161,7 @@ const myProjects = [
     liveDemo: "https://next-js-ecommerce-app.vercel.app/",
     githup: "https://github.com/aymantarek16/next.js-ecommerce-app",
   },
+  
 ];
 
 export default myProjects;
