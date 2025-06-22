@@ -132,8 +132,8 @@ const myProjects = [
     projectTitle: "To do list with firebase",
     subTitle: "Register an account, then log in and add all your daily tasks with Local Storage",
     imgPath: "./Projects images/React.js/FireBase.png",
-    liveDemo: "https://react-level2-19516.web.app/",
-    githup: "https://github.com/aymantarek16/To-Do-List-by-Fire-base/tree/main",
+    liveDemo: "https://to-do-list-by-fire-base-main.vercel.app/",
+    githup: "https://github.com/aymantarek16/To-Do-List-by-Fire-base-main",
   },
   {
     category: "react",
