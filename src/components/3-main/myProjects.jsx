@@ -153,15 +153,6 @@ const myProjects = [
     liveDemo: "https://schedule-app-nh6c.vercel.app/",
     githup: "https://github.com/aymantarek16/schedule_App",
   },
-  {
-    category: "next",
-    projectTitle: "Ecommerce",
-    subTitle: "Elevate your style effortlessly - Discover fashion that speaks to your uniqueness",
-    imgPath: "./Projects images/Next.js/NextEcommerce.jpg",
-    liveDemo: "https://next-js-ecommerce-app.vercel.app/",
-    githup: "https://github.com/aymantarek16/next.js-ecommerce-app",
-  },
-  
 ];
 
 export default myProjects;
