@@ -64,12 +64,7 @@ const Hero = () => {
 
         {/* Download CV */}
         <div className="cv">
-          <a
-            href="https://drive.google.com/file/d/1pbUbHtpnjqMeXrQpX13knkOlofHWzNVJ/view?usp=drive_link"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cvBtn"
-          >
+          <a href="/Front End Developer Cv.pdf" download className="cvBtn">
             Download CV
           </a>
         </div>
