@@ -153,6 +153,14 @@ const myProjects = [
     liveDemo: "https://schedule-app-nh6c.vercel.app/",
     githup: "https://github.com/aymantarek16/schedule_App",
   },
+    {
+    category: "next",
+    projectTitle: "Task-Manager",
+    subTitle: "Powerful Task manager built with Firebase (Auth + DB) & modern tech",
+    imgPath: "./Projects images/Next.js/todo_app.png",
+    liveDemo: "https://todo-app-delta-black-51.vercel.app/",
+    githup: "https://github.com/aymantarek16/todo-app",
+  },
 ];
 
 export default myProjects;

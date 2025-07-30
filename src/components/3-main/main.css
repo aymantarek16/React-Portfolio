@@ -67,6 +67,7 @@ main section.right-section {
     rgba(255, 255, 255, 0.05),
     rgba(255, 255, 255, 0.05)
   );
+  min-height: 270px !important;
 }
 
 .light .card,
