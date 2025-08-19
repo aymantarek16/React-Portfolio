@@ -147,6 +147,14 @@ const myProjects = [
   // ========================== Next.js Projects ========================== //
     {
     category: "next",
+    projectTitle: "Furniture Store",
+    subTitle:"Modern Furniture E-commerce Store for a smooth shopping experience.",
+    imgPath: "./Projects images/Next.js/HomePage.png",
+    liveDemo: "https://furniture-ecommerce-next-js.vercel.app/",
+    githup: "https://github.com/aymantarek16/furniture-ecommerce-next.js",
+  },
+  {
+    category: "next",
     projectTitle: "Shedule-app",
     subTitle: "Modern appointment scheduling app built with Next.js 15 and Tailwind CSS",
     imgPath: "./Projects images/Next.js/Shedule.png",
