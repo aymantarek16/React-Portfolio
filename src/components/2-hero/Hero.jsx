@@ -32,10 +32,12 @@ const Hero = () => {
           Front-End Developer & UI Designer
         </motion.h1>
         <p className="sub-title">
-          I'm Ayman Tarek — a passionate front-end developer with 2+ years of
-          experience crafting fast, accessible, and responsive web applications
-          using React.js. I specialize in building clean UI, optimizing
-          performance, and delivering seamless user experiences.
+          Hi, I’m Ayman Tarek — a passionate Front-End Developer with 3+ years
+          of experience crafting fast, responsive, and engaging web
+          applications. I love turning ideas into interactive digital products
+          using React.js, Next.js, and modern front-end tools. My focus is on
+          creating clean designs, smooth animations, and delivering user
+          experiences that truly stand out.
         </p>
 
         <div className="all-icons flex">
