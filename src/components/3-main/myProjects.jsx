@@ -172,8 +172,8 @@ const myProjects = [
       {
     category: "next",
     projectTitle: "Crypto-Radar",
-    subTitle: "web application to track real-time cryptocurrency prices, explore charts",
-    imgPath: "./Projects images/Next.js/crypto_radar",
+    subTitle: "Web application to track real-time cryptocurrency prices, explore charts",
+    imgPath: "./Projects images/Next.js/crypto_radar.png",
     liveDemo: "https://crypto-radar-next-js.vercel.app/",
     githup: "https://github.com/aymantarek16/crypto-radar",
   },
