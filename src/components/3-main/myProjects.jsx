@@ -149,7 +149,7 @@ const myProjects = [
     category: "next",
     projectTitle: "Furniture Store",
     subTitle:"Modern Furniture E-commerce Store for a smooth shopping experience.",
-    imgPath: "./Projects images/Next.js/HomePage.png",
+    imgPath: "./Projects images/Next.js/furniture_store.png",
     liveDemo: "https://furniture-ecommerce-next-js.vercel.app/",
     githup: "https://github.com/aymantarek16/furniture-ecommerce-next.js",
   },
@@ -157,7 +157,7 @@ const myProjects = [
     category: "next",
     projectTitle: "Shedule-app",
     subTitle: "Modern appointment scheduling app built with Next.js 15 and Tailwind CSS",
-    imgPath: "./Projects images/Next.js/Shedule.png",
+    imgPath: "./Projects images/Next.js/shedule_app.png",
     liveDemo: "https://schedule-app-nh6c.vercel.app/",
     githup: "https://github.com/aymantarek16/schedule_App",
   },
@@ -168,6 +168,14 @@ const myProjects = [
     imgPath: "./Projects images/Next.js/todo_app.png",
     liveDemo: "https://todo-app-delta-black-51.vercel.app/",
     githup: "https://github.com/aymantarek16/todo-app",
+  },
+      {
+    category: "next",
+    projectTitle: "Crypto-Radar",
+    subTitle: "web application to track real-time cryptocurrency prices, explore charts",
+    imgPath: "./Projects images/Next.js/crypto_radar",
+    liveDemo: "https://crypto-radar-next-js.vercel.app/",
+    githup: "https://github.com/aymantarek16/crypto-radar",
   },
 ];
 
