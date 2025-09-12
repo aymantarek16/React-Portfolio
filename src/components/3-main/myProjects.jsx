@@ -113,22 +113,6 @@ const myProjects = [
   },
   {
     category: "react",
-    projectTitle: "Prayer Timings",
-    subTitle: "Displaying prayer times in Cairo with a counter for the next prayer",
-    imgPath: "./Projects images/React.js/Prayer-timings.png",
-    liveDemo: "https://prayer-timings-pi.vercel.app/",
-    githup: "https://github.com/aymantarek16/prayer-timings",
-  },
-  {
-    category: "react",
-    projectTitle: "Apple Store",
-    subTitle: "Show some iPhone prices with the ability to add to the shopping cart",
-    imgPath: "./Projects images/React.js/Apple Store.jpg",
-    liveDemo: "https://ecommerce-app-with-redux.vercel.app/",
-    githup: "https://github.com/aymantarek16/ecommerce-app-with-redux",
-  },
-  {
-    category: "react",
     projectTitle: "To do list with firebase",
     subTitle: "Register an account, then log in and add all your daily tasks with Local Storage",
     imgPath: "./Projects images/React.js/FireBase.png",
@@ -143,6 +127,32 @@ const myProjects = [
     liveDemo: "https://react-food-delivery-app-zeta.vercel.app/home",
     githup: "https://github.com/aymantarek16/react-food-delivery-app",
   },
+  {
+    category: "react",
+    projectTitle: "Apple Store",
+    subTitle: "Show some iPhone prices with the ability to add to the shopping cart",
+    imgPath: "./Projects images/React.js/Apple Store.jpg",
+    liveDemo: "https://ecommerce-app-with-redux.vercel.app/",
+    githup: "https://github.com/aymantarek16/ecommerce-app-with-redux",
+  },
+    {
+    category: "react",
+    projectTitle: "Prayer Timings",
+    subTitle: "Displaying prayer times in Cairo with a counter for the next prayer",
+    imgPath: "./Projects images/React.js/Prayer-timings.png",
+    liveDemo: "https://prayer-timings-pi.vercel.app/",
+    githup: "https://github.com/aymantarek16/prayer-timings",
+  },
+    {
+    category: "react",
+    projectTitle: "Digital Tasbeeh",
+    subTitle: "Highly interactive digital Tasbeeh app with smooth, responsive experience",
+    imgPath: "./Projects images/React.js/sebha.png",
+    liveDemo: "https://digital-tasbeeh-flax.vercel.app/",
+    githup: "https://github.com/aymantarek16/digital-tasbeeh",
+  },
+
+
 
   // ========================== Next.js Projects ========================== //
     {
@@ -156,7 +166,7 @@ const myProjects = [
   {
     category: "next",
     projectTitle: "Shedule-app",
-    subTitle: "Modern appointment scheduling app built with Next.js 15 and Tailwind CSS",
+    subTitle: "Modern appointment scheduling app for effortless time management",
     imgPath: "./Projects images/Next.js/shedule_app.png",
     liveDemo: "https://schedule-app-nh6c.vercel.app/",
     githup: "https://github.com/aymantarek16/schedule_App",
@@ -172,7 +182,7 @@ const myProjects = [
       {
     category: "next",
     projectTitle: "Crypto-Radar",
-    subTitle: "Web application to track real-time cryptocurrency prices, explore charts",
+    subTitle: "Real-time cryptocurrency tracking app to explore prices and interactive charts",
     imgPath: "./Projects images/Next.js/crypto_radar.png",
     liveDemo: "https://crypto-radar-next-js.vercel.app/",
     githup: "https://github.com/aymantarek16/crypto-radar",

@@ -93,6 +93,7 @@ main section.right-section {
 .card .box .title {
   color: var(--title);
   text-transform: capitalize;
+  font-size : 20px;
 }
 
 .card .box .sub-title {
