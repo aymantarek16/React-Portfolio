@@ -22,15 +22,15 @@ const Hero = () => {
           <div className="icon-verified"></div>
         </div>
 
-        <h1 className="title"></h1>
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2, type: "spring", stiffness: 5 }}
-          className="title"
-        >
-          Front-End Developer & UI Designer
-        </motion.h1>
+    <motion.h1
+  initial={{ opacity: 0, y: 50 }}        
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.5, type: "spring", stiffness: 80 }}
+  className="title"
+>
+  Front-End Developer <span className="highlight">& Digital Experience Designer</span>
+</motion.h1>
+
         <p className="sub-title">
           Hi, I’m Ayman Tarek — a passionate Front-End Developer with 3+ years
           of experience crafting fast, responsive, and engaging web
