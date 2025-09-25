@@ -28,22 +28,7 @@ const Main = () => {
         >
           all projects
         </button>
-        <button
-          onClick={() => {
-            handleBtnClick("ui");
-          }}
-          className={currentActive === "ui" ? "active" : null}
-        >
-          Ui
-        </button>
-        <button
-          onClick={() => {
-            handleBtnClick("react");
-          }}
-          className={currentActive === "react" ? "active" : null}
-        >
-          React.js
-        </button>
+            {/* Next */}
         <button
           onClick={() => {
             handleBtnClick("next");
@@ -52,6 +37,26 @@ const Main = () => {
         >
           Next.js
         </button>
+              {/* React */}
+        <button
+          onClick={() => {
+            handleBtnClick("react");
+          }}
+          className={currentActive === "react" ? "active" : null}
+        >
+          React.js
+        </button>
+        {/* Ui */}
+        <button
+          onClick={() => {
+            handleBtnClick("ui");
+          }}
+          className={currentActive === "ui" ? "active" : null}
+        >
+          Ui
+        </button>
+  
+    
       </section>
 
       <section className="flex right-section">
