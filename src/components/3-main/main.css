@@ -19,7 +19,7 @@ main section.left-section.flex {
   gap: 12px;
   position: sticky;
   top: 50px; 
-  /* align-self: flex-start;  */
+  align-self: flex-start; 
 }
 
 main section.left-section.flex button {
@@ -181,6 +181,8 @@ main section.right-section {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    position: relative;
+    top: 0;
   }
 
   main section.left-section.flex button {
