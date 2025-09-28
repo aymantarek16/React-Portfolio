@@ -94,8 +94,8 @@ section.hero .all-icons .icon {
 section.hero .all-icons .icon:hover {
   transform: scale(1.2);
   cursor: pointer;
-  background: linear-gradient(135deg, var(--purple), var(--pink));
-  -webkit-text-fill-color: transparent;
+  color: var(--purple);
+  border-radius: 50%;
 }
 
 /* Button */
