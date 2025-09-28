@@ -2,56 +2,83 @@
  table of contents
 ==============================
 1. Left Section
-2. Right Section ==> animation*/
+2. Right Section ==> animation
+============================== */
 
+/* ========================
+  Root Variables (Light/Dark)
+=========================== */
+:root {
+  --purple: #7c3aed;
+  --purple-dark: #5b21b6;
+  --blue: #3b82f6;
+  --pink: #ec4899;
+  --bg-dark: #0a0a0a;
+  --bg-light: #f9f9f9;
+  --text-light: #e5e5e5;
+  --text-dark: #1f1f1f;
+  --subtitle-dark: #9ca3af;
+  --subtitle-light: #4b5563;
+}
 
+.dark {
+  --title: var(--text-light);
+  --subtitle: var(--subtitle-dark);
+  --primary: var(--purple);
+  --icon-hover: var(--pink);
+}
+
+.light {
+  --title: var(--text-dark);
+  --subtitle: var(--subtitle-light);
+  --primary: var(--purple-dark);
+  --icon-hover: var(--blue);
+}
 
 /* ========================
 1. Left Section
 =========================== */
-
 section.hero {
   margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/* Avatar */
 section.hero .parent-avatar.flex {
   align-items: end;
   gap: 0.6rem;
   min-height: 110px;
 }
 
-section.hero .left-section {
-  flex-grow: 1;
-}
-
-section.hero .icon-verified {
-  color: var(--blue);
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-}
-
 section.hero .avatar {
   width: 110px;
   border-radius: 50%;
-  border: 1px solid darkorange;
-  padding: 1px;
-  box-shadow: 2px 2px 40px rgba(203, 200, 200, 0.586) inset;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
 }
 
+/* Title + Subtitle */
 section.hero h1.title {
-  font-size: 2.85rem;
-  line-height: 3.3rem;
+  font-size: 2.9rem;
+  line-height: 3.4rem;
   margin: 24px 0;
-  color: var(--title);
+  background: linear-gradient(90deg, var(--purple), var(--blue), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 section.hero p.sub-title {
   color: var(--subtitle);
-  font-size: 0.9rem;
-  line-height: 1.65rem;
+  font-size: 1rem;
+  line-height: 1.7rem;
   margin-bottom: 25px;
 }
 
+/* Icons */
 section.hero .all-icons {
   gap: 1.5rem;
 }
@@ -62,52 +89,46 @@ section.hero .all-icons .icon {
   transition: 0.3s;
 }
 
-
 section.hero .all-icons .icon:hover {
-  scale: 1.2;
+  transform: scale(1.2);
   cursor: pointer;
-  color: var(--icon-hover);
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  -webkit-text-fill-color: transparent;
 }
 
-
+/* Button */
 section.hero .cv {
   display: flex;
 }
 
 section.hero div.cv a.cvBtn {
-  background-color: rgba(36, 37, 46, 1);
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
   padding: 0.75rem 1.8rem;
   text-align: center;
   font-size: 1rem;
   text-transform: capitalize;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-top: 25px !important;
   display: block;
-  border: 1px solid rgb(63 63 70);
-  color: var(--title);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: white;
   width: fit-content;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.4);
 }
-
 
 section.hero div.cv a.cvBtn:hover {
-  scale: 0.97;
-  opacity: 1;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.7);
+  opacity: 0.95;
 }
-
-
-.light section.hero div.cv a.cvBtn {
-  color: var(--primary);
-}
-
 
 /* ===================================
     2. Right Section ==> animation
 ====================================== */
-
 section.hero .animation {
   width: 100%;
-  translate: 100px 55px;
+  translate: 80px 40px;
 }
 
 @media (max-width: 1250px) {

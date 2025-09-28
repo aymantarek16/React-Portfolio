@@ -11,46 +11,36 @@
     1. Header Design
 =========================== */
 header.flex {
-  /* justify-content: space-between; */
   justify-content: end;
   padding: 0 2.4rem;
   margin-top: 1.2rem;
 }
 
-
 header.flex nav {
-  background-color: var(--bgHeader);
-  padding: 0.77rem 1.6rem;
-  border-radius: 55px;
-  box-shadow: 1px 1px 40px #2323242a;
+  background: var(--bgHeader);
+  padding: 0.7rem 1.6rem;
+  border-radius: 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
 }
 
 header ul.flex {
-  gap: 16px;
+  gap: 1.2rem;
 }
 
 header ul li a {
   color: var(--title);
   opacity: 0.9;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 500;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 header ul li:hover a {
-  color: var(--blue);
+  color: var(--purple-light);
   opacity: 1;
-  font-size: 0.9rem;
 }
-
-
-header button {
-  font-size: 1.2rem;
-}
-
-header button.menu {
-  display: none;
-}
-
 
 
 /* ========================
@@ -58,38 +48,40 @@ header button.menu {
 =========================== */
 header .icon-menu,
 header button.mode {
-  background-color: var(--bgHeader);
-  height: 2.4rem;
-  width: 2.4rem;
-  border-radius: 50%;
+  background: var(--secondary);
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 1.6rem;
+  display: flex;
   justify-content: center;
+  align-items: center;
   color: var(--subtitle);
-  border: 1px solid rgba(244, 165, 96, 0.249);
-  transition: 0.2s;
-  box-shadow: 1px 1px 40px rgba(35, 35, 36, 0.165);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 header .icon-sun {
-  color: rgb(255, 165, 0);
+  color: #fbbf24; /* gold */
 }
 
-
-header .icon-menu,
+header .icon-menu:hover,
 header button.mode:hover {
   color: var(--title);
-  border: 1px solid rgb(244, 165, 96);
+  border-color: var(--purple-light);
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
 }
 
 header .icon-close {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--subtitle);
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 header .icon-close:hover {
-  font-size: 1.7rem;
+  font-size: 1.55rem;
   color: crimson;
-  rotate: 180deg;
+  transform: rotate(180deg);
 }
 
 
@@ -100,47 +92,37 @@ header .fixed {
   position: fixed;
   inset: 0;
   z-index: 100000;
-  background-color: rgba(40, 40, 48, 0.91);
-  backdrop-filter: blur(4px);
+  background-color: rgba(15, 15, 20, 0.85);
+  backdrop-filter: blur(8px);
 }
 
 @keyframes modalScale {
-  0% {
-    scale: 0;
-  }
-
-  50% {
-    scale: 1.2;
-  }
-
-  100% {
-    scale: 1;
-  }
+  0% { transform: scale(0.7); opacity: 0; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
 }
 
 header .fixed ul.modal {
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2rem;
+  margin: 2rem auto;
   border-radius: 1rem;
   padding: 1rem 2rem;
-  background-color: var(--secondary);
-  animation: modalScale 0.7s;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  animation: modalScale 0.5s ease;
 }
 
 header .fixed ul.modal li {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 0.80rem;
-  padding-top: 0.5rem;
+  padding: 0.7rem 0;
 }
 
 header .fixed ul.modal li:first-child {
   text-align: right;
   border: none;
-  padding-bottom: 0;
-  padding-top: 0.2rem;
-  margin-bottom: -1rem;
+  padding: 0.3rem 0;
+  margin-bottom: -0.5rem;
 }
 
 header .fixed ul.modal li:last-child {
@@ -149,14 +131,19 @@ header .fixed ul.modal li:last-child {
 
 header .fixed ul.modal li a {
   font-size: 1rem;
+  color: var(--title);
+  transition: color 0.3s ease;
 }
 
+header .fixed ul.modal li a:hover {
+  color: var(--purple-light);
+}
 
 
 /* =====================================
   4- Responsive Design (media query)
 ======================================== */
-@media (width< 768px) {
+@media (max-width: 768px) {
   header.flex nav {
     display: none;
   }

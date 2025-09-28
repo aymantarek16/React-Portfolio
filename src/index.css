@@ -1,64 +1,134 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+/* ========================
+   * Root Colors
+=========================== */
 :root {
-  --primary: #000;
-  --secondary: rgb(24 24 27);
-  --border: rgba(63, 63, 70, 0.4);
-  --title: rgb(244 244 245);
-  --subtitle: rgb(161 161 170);
-  --bgHeader: rgb(39, 39, 42);
-  --blue: rgb(93, 188, 252);
+  --primary: #0a0a0a;
+  --secondary: #141414;
+  --border: rgba(120, 120, 140, 0.25);
+  --title: #f5f5f5;
+  --subtitle: #9a9aa1;
+  --bgHeader: #1a1a1a;
+
+  --blue: #008cff;
+  --purple-dark: #4b0082;
+  --purple-light: #7c3aed;
   --icon-hover: #d4d4d8;
+
+  --gradient-text: linear-gradient(135deg, var(--purple-dark), var(--blue));
+  --gradient-bg: linear-gradient(135deg, #0a0a0a, #12121a, #0a0a0a);
+  --gradient-card: linear-gradient(145deg, rgba(124, 58, 237, 0.1), rgba(0, 140, 255, 0.1));
   --container-padding: 4.8rem;
+}
+
+.light {
+  --primary: #ffffff;
+  --secondary: #f9f9fb;
+  --border: rgba(200, 200, 200, 0.4);
+  --title: #1a1a1a;
+  --subtitle: #4b4b4b;
+  --bgHeader: #ffffff;
+
+  --purple-dark: #6d28d9;
+  --purple-light: #a855f7;
+  --blue: #0b4d6e;
+
+  --gradient-text: linear-gradient(135deg, var(--purple-dark), var(--blue));
+  --gradient-bg: linear-gradient(135deg, #ffffff, #f4f4f5, #e7e7ea);
+  --gradient-card: linear-gradient(145deg, rgba(109, 40, 217, 0.08), rgba(2, 132, 199, 0.08));
+
+  --icon-hover: #333;
 }
 
 /* ========================
    * Custom Classes
 =========================== */
-.light {
-  --primary: rgb(250, 250, 250);
-  --secondary: rgb(255, 255, 255);
-  --border: rgba(202, 202, 202, 0.518);
-  --title: rgb(39 39 42);
-  --subtitle: rgb(82 82 91);
-
-  --bgHeader: rgb(253, 253, 253);
-  --blue: rgb(0, 149, 246);
-
-  --icon-hover: #333;
-}
-
 .container {
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: var(--secondary);
-  padding: 0 4.8rem;
+  margin: auto;
+  background: var(--secondary);
+  padding: 0 var(--container-padding);
+  border-radius: 0.8rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .divider {
   border-bottom: 1px solid var(--border);
   margin: 3rem 0;
-  width: calc(100% + var(--container-padding) + var(--container-padding));
+  width: calc(100% + var(--container-padding) * 2);
   margin-left: calc(var(--container-padding) * -1);
 }
 
 .flex {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
-.border {
-  border: 2px solid red;
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-text-fill-color: transparent;
 }
 
-.d-none{
-  display: none !important;
+/* Glass Effect Card */
+.card-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
 }
 
+.card-glass:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--purple-light);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.25);
+}
 
+/* ========================
+   * Links & Buttons
+=========================== */
+a {
+  text-decoration: none;
+  color: var(--title);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--purple-light);
+  cursor: pointer;
+}
+
+button {
+  all: unset;
+  padding: 5px;
+  border-radius: 1rem;
+  background: var(--gradient-text);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+}
+
+button:active {
+  scale: 0.96;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
 /* ========================
    *  Main Style 
@@ -73,94 +143,62 @@ ul li {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
-  color: initial;
-  transition: 0.2s;
-}
-
-a:hover {
-  cursor: pointer;
-}
-
-button {
-  all: unset;
-  transition: 0.2s;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-button:active {
-  scale: 0.9;
-}
-
-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
 html {
   font-family: "Roboto", sans-serif;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.2px;
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--primary);
-  color: #fff;
+  background: var(--bgHeader);
+  color: var(--title);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* ========================
+   * Scrollbar
+=========================== */
 ::-webkit-scrollbar {
-  width: 0.8rem;
+  width: 0.7rem;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05); 
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: var(--bgHeader) ;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(5px); 
+  background: rgba(124, 58, 237, 0.3); 
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.105);
   transition: background 0.3s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--purple-light);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
+/* ========================
+   * Scroll to Top Button
+=========================== */
 .scroll2Top {
-  background-color: rgba(81, 25, 210, 0.85);
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 50%;
+  background: var(--gradient-text);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1.6rem;
   position: fixed;
   bottom: 2rem;
   right: 3%;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--icon-hover);
-  font-size: 1.25rem;
-}
-
-.light .scroll2Top {
-  background-color: rgba(62, 19, 178, 0.85);
   color: #fff;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
 .scroll2Top:hover {
-  background-color: rgb(18, 81, 145);
+  background: var(--purple-light);
   color: #fff;
+  transform: translateY(-3px);
 }
 
 /* ========================
@@ -174,7 +212,7 @@ body {
   }
 
   .divider {
-    width: calc(100% + var(--container-padding) + var(--container-padding));
+    width: calc(100% + var(--container-padding) * 2);
     margin-left: calc(var(--container-padding) * -1);
   }
 }
@@ -187,7 +225,7 @@ body {
   .scroll2Top {
     width: 2.2rem;
     height: 2.2rem;
-    opacity: 0.6;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
   }
 }

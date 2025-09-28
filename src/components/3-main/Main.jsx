@@ -6,14 +6,23 @@ import { AnimatePresence, motion } from "framer-motion";
 const Main = () => {
   const [currentActive, setcurrentActive] = useState("all");
   const [arr, setArr] = useState(myProjects);
+  const [visibleCount, setVisibleCount] = useState(6); 
 
   const handleBtnClick = (e) => {
     setcurrentActive(e);
     const newArr = myProjects.filter((item) => {
       return item.category === e;
     });
-
     setArr(newArr);
+    setVisibleCount(6); 
+  };
+
+  const handleLoadMore = () => {
+    if (visibleCount >= arr.length) {
+      setVisibleCount(6); // 
+    } else {
+      setVisibleCount(arr.length); 
+    }
   };
 
   return (
@@ -23,12 +32,13 @@ const Main = () => {
           onClick={() => {
             setcurrentActive("all");
             setArr(myProjects);
+            setVisibleCount(6);
           }}
           className={currentActive === "all" ? "active" : null}
         >
           all projects
         </button>
-            {/* Next */}
+        {/* Next */}
         <button
           onClick={() => {
             handleBtnClick("next");
@@ -37,7 +47,7 @@ const Main = () => {
         >
           Next.js
         </button>
-              {/* React */}
+        {/* React */}
         <button
           onClick={() => {
             handleBtnClick("react");
@@ -55,13 +65,11 @@ const Main = () => {
         >
           Ui
         </button>
-  
-    
       </section>
 
       <section className="flex right-section">
         <AnimatePresence>
-          {arr.map((item, index) => {
+          {arr.slice(0, visibleCount).map((item, index) => {
             return (
               <motion.article
                 key={index}
@@ -94,6 +102,26 @@ const Main = () => {
             );
           })}
         </AnimatePresence>
+
+        {/*Load More / Show Less */}
+        {arr.length > 6 && (
+          <button
+            onClick={handleLoadMore}
+            style={{
+              marginTop: "20px",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              border: "none",
+              background: "linear-gradient(135deg, var(--blue), var(--purple))",
+              color: "#fff",
+              cursor: "pointer",
+              fontWeight: "500",
+              boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)",
+            }}
+          >
+            {visibleCount >= arr.length ? "Show Less" : "Load More"}
+          </button>
+        )}
       </section>
     </main>
   );
