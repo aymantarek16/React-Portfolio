@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const Main = () => {
   const [currentActive, setcurrentActive] = useState("all");
   const [arr, setArr] = useState(myProjects);
-  const [visibleCount, setVisibleCount] = useState(6); 
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const handleBtnClick = (e) => {
     setcurrentActive(e);
@@ -14,14 +14,22 @@ const Main = () => {
       return item.category === e;
     });
     setArr(newArr);
-    setVisibleCount(6); 
+    setVisibleCount(6);
   };
 
   const handleLoadMore = () => {
     if (visibleCount >= arr.length) {
-      setVisibleCount(6); // 
+      setVisibleCount(6);
+
+      // Scroll up after updating visibleCount
+      setTimeout(() => {
+        window.scrollTo({
+          top: window.scrollY - 750,
+          behavior: "smooth",
+        });
+      }, 100);
     } else {
-      setVisibleCount(arr.length); 
+      setVisibleCount(arr.length);
     }
   };
 
