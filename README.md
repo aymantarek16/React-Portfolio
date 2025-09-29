@@ -3,6 +3,8 @@
 🚀 A fully responsive personal portfolio website built with React.js + Vite, showcasing my projects, skills, and contact details.
 This project reflects my journey as a Front-End Developer and is continuously updated with every new project I build.
 
+
+
 ## 🔑 Main Features
 
 🌙 Dark Mode Toggle – Switch seamlessly between light and dark themes for a better user experience.
@@ -16,6 +18,7 @@ This project reflects my journey as a Front-End Developer and is continuously up
 ⚡ Responsive Design – Fully optimized for all screen sizes and devices.
 
 📝 Footer – Clean, minimal, and includes copyright info.
+
 
 
 
@@ -34,6 +37,7 @@ This project reflects my journey as a Front-End Developer and is continuously up
 🎥 Framer Motion (animations)
 
 🎬 Lottie React (interactive animations)
+
 
 
 
@@ -64,4 +68,4 @@ A minimal footer containing copyright information.
 
 
 
-![preview](public/portfolio.png)
+![preview](./public/portfolio.png)
