@@ -17,21 +17,25 @@ const Main = () => {
     setVisibleCount(6);
   };
 
-  const handleLoadMore = () => {
-    if (visibleCount >= arr.length) {
-      setVisibleCount(6);
+const handleLoadMore = () => {
+  if (visibleCount >= arr.length) {
+    setVisibleCount(6);
 
-      // Scroll up after updating visibleCount
-      setTimeout(() => {
-        window.scrollTo({
-          top: window.scrollY - 750,
-          behavior: "smooth",
-        });
-      }, 100);
-    } else {
-      setVisibleCount(arr.length);
-    }
-  };
+    // Scroll up after updating visibleCount
+    setTimeout(() => {
+      const isMobile = window.innerWidth <= 768;
+      const offset = isMobile ? 300 : 750;
+
+      window.scrollTo({
+        top: window.scrollY - offset,
+        behavior: "smooth",
+      });
+    }, 100);
+  } else {
+    setVisibleCount(arr.length);
+  }
+};
+
 
   return (
     <main className="flex">
