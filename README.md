@@ -25,4 +25,4 @@ A personal portfolio website built using the React.js library, I have used all m
 6. Framer-Motion
 7. Lottie-React
 
-![preview](https://res.cloudinary.com/dsj56djsq/image/upload/v1716042033/Images%20of%20my%20Projects/React.js/React_Portfolio_x1fuyh.png)
+![preview](/portfolio.png)
