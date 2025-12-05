@@ -58,9 +58,10 @@ Build	Vite, npm
 </div>
 
 
-<div align="center">
-  <img src="/portfolio.png" alt="preview" />
+<div align="center">🖼️ 
+![preview](./public/portfolio.png)
 </div>
+
 
 <div align="center">
 
