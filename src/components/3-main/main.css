@@ -1,0 +1,193 @@
+/* ========================
+ table of contents
+===========================
+1. Left Section ==> Buttons
+2. Right Section ==> Card
+3- Responsive Design (media query)
+=========================== */
+
+main.flex {
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ===============================
+   1. Left Section ==> Buttons
+================================== */
+main section.left-section.flex {
+    flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 50px; 
+  align-self: flex-start; 
+}
+
+main section.left-section.flex button {
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  width: 11rem;
+  padding: 0.75rem 0;
+  text-align: center;
+  font-size: 1.05rem;
+  text-transform: capitalize;
+  opacity: 0.75;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
+}
+
+main section.left-section.flex button:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.6);
+}
+
+main section.left-section.flex button.active {
+  opacity: 1;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  border: 1px solid var(--blue);
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.light main section.left-section.flex button.active {
+  border: 1px solid #000;
+}
+
+/* ===============================
+   2. Right Section ==> Card
+================================== */
+
+main section.right-section {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+.card {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(36, 37, 46, 1),
+    rgba(36, 37, 46, 0.9)
+  );
+  border: 1px solid rgba(93, 188, 252, 0.3);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+  min-height: 270px !important;
+  overflow: hidden;
+}
+
+.light .card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  border: 1px solid var(--blue);
+  transform: translateY(-5px) scale(1.02) rotate(1deg);
+  box-shadow: 0 6px 30px rgba(59, 130, 246, 0.4);
+  cursor: pointer;
+}
+
+.card img {
+  border-radius: 10px 10px 0 0;
+  transition: 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card .box {
+  padding: 1rem 0.8rem;
+}
+
+.card .box .title {
+  color: var(--title);
+  text-transform: capitalize;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card .box .sub-title {
+  color: var(--subtitle);
+  font-size: 0.9rem;
+  margin-top: 0.7rem;
+  margin-bottom: 1.1rem;
+  line-height: 1.5;
+  height: 60px;
+}
+
+.card .box .icons {
+  justify-content: start;
+  gap: 15px;
+}
+
+.card .icon-github,
+.card .icon-link {
+  font-size: 1rem;
+  color: var(--subtitle);
+  border: 1px solid var(--purple);
+  border-radius: 50%;
+  padding: 0.4rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.card .icon-github:hover,
+.card .icon-link:hover {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  cursor: pointer;
+}
+
+.card a.link {
+  font-size: 0.95rem;
+  color: var(--blue);
+  margin-right: 12px;
+  transition: 0.3s;
+}
+
+.card a.link:hover {
+  text-decoration: underline;
+}
+
+
+/* =====================================
+  3- Responsive Design (media query)
+======================================== */
+
+@media (max-width: 600px) {
+  main.flex {
+    flex-direction: column;
+    gap: 2.64rem;
+    align-items: center;
+  }
+
+  main section.left-section.flex {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    top: 0;
+  }
+
+  main section.left-section.flex button {
+    width: 7rem;
+    padding: 0.8rem 0;
+    font-size: 0.9rem;
+  }
+}

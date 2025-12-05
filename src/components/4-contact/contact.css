@@ -1,0 +1,129 @@
+section.contact-us {
+  margin-top: 4rem;
+}
+
+section.contact-us .icon-envelope {
+  color: var(--blue);
+  margin-right: 1rem;
+  font-size: 1.9rem;
+}
+
+section.contact-us .title {
+  font-size: 2.2rem;
+  color: var(--title);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+section.contact-us .sub-title {
+  color: var(--subtitle);
+  margin-bottom: 2rem;
+  line-height: 1.7rem;
+  max-width: 550px;
+}
+
+section.contact-us label {
+  color: var(--subtitle);
+  font-weight: 500;
+}
+
+/* ====== Inputs & Textarea ====== */
+section.contact-us #email,
+section.contact-us #message {
+  all: unset;
+  background: rgba(63, 63, 70, 0.25);
+  border: 1px solid rgba(63, 63, 70, 0.7);
+  width: 18rem;
+  padding: 0.7rem 1rem;
+  margin-left: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  color: var(--title);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+section.contact-us #email:focus,
+section.contact-us #message:focus,
+section.contact-us #email:hover,
+section.contact-us #message:hover {
+  border: 1px solid var(--blue);
+  box-shadow: 0 0 12px rgba(93, 188, 252, 0.4);
+}
+
+/* Light Mode Inputs */
+.light section.contact-us #email,
+.light section.contact-us #message {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: #232324;
+}
+
+.light section.contact-us #email:focus,
+.light section.contact-us #message:focus {
+  border: 1px solid #000;
+}
+
+/* Textarea */
+section.contact-us #message {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+/* ====== Submit Button ====== */
+section.contact-us .submit {
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  padding: 0.8rem 2.2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  border: 1px solid rgba(93, 188, 252, 0.3);
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
+
+section.contact-us .submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+  cursor: pointer;
+}
+
+/* =====================================
+  Responsive Design
+======================================== */
+@media (max-width: 1250px) {
+  section.contact-us .contact-animation {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  section.contact-us form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  section.contact-us form div.flex {
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+
+  section.contact-us #email,
+  section.contact-us #message {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  section.contact-us .submit {
+    width: 50%;
+    align-self: center;
+  }
+}
