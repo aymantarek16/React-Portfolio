@@ -10,7 +10,7 @@ This project is continuously improved as my experience evolves.
 
 👉 Live Preview
 
-(Add the link after deployment)
+(https://react-portfolio-six-green.vercel.app/)
 
 </div>
 <div align="center">🔑 Main Features</div>
@@ -58,7 +58,10 @@ Build	Vite, npm
 </div>
 
 
-<div align="center">🖼️ ![preview](./public/portfolio.png)</div>
+<div align="center">
+  ![preview](/portfolio.png)
+</div>
+
 <div align="center">
 
 </div>
