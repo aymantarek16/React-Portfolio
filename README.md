@@ -82,3 +82,5 @@ Email: (aymantarekm16@gmail.com)
 
 </div>
 <div align="center">⭐ If you like this project, consider giving it a star!</div>
+
+![preview](portfolio.png)
