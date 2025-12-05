@@ -1,71 +1,79 @@
-## ✨ React Portfolio
+<div align="center">✨ React Portfolio</div>
+<div align="center">
 
-🚀 A fully responsive personal portfolio website built with React.js + Vite, showcasing my projects, skills, and contact details.
-This project reflects my journey as a Front-End Developer and is continuously updated with every new project I build.
+A modern, fully responsive, animated personal portfolio built with React.js + Vite, showcasing my work, skills, and growth as a Front-End Developer.
+This project is continuously improved as my experience evolves.
 
+</div>
+<div align="center">🌐 Live Demo</div>
+<div align="center">
 
+👉 Live Preview
 
-## 🔑 Main Features
+(Add the link after deployment)
 
-🌙 Dark Mode Toggle – Switch seamlessly between light and dark themes for a better user experience.
+</div>
+<div align="center">🔑 Main Features</div>
+✔️ Dark / Light Mode
 
-👨‍💻 About Me Section – A brief introduction about myself, my background, and social media links.
+Smooth theme switching with preference saved in Local Storage.
 
-🗂️ Projects Showcase – Displaying all my projects with live demo and GitHub repo links.
+✔️ About Me Section
 
-📩 Contact Section – Integrated contact form (Formspree) + direct email for easy communication.
+A professional introduction with background, experience, and social links.
 
-⚡ Responsive Design – Fully optimized for all screen sizes and devices.
+✔️ Projects Showcase
 
-📝 Footer – Clean, minimal, and includes copyright info.
+All my projects displayed in a clean grid with:
 
+Thumbnail preview
 
+Short description
 
+Live Demo links
 
-### 🛠️ Technologies Used
+GitHub repository links
 
-⚛️ React.js + Vite
+✔️ Contact Section
 
-🎨 CSS (custom styling)
+Formspree-powered contact form + direct email option.
 
-💾 Local Storage (for theme persistence)
+✔️ Fully Responsive
 
-🎯 Icomoon (for custom icons)
+Optimized for all devices (mobile, tablet, laptop, 4K).
 
-📬 Formspree React Library (contact form)
+✔️ Modern Animations
 
-🎥 Framer Motion (animations)
+Powered by Framer Motion and Lottie React for smooth interactive UI.
 
-🎬 Lottie React (interactive animations)
-
-
-
-
-### 📌 Site Components
-
-🌙 Dark Mode Toggle
-
-Allows visitors to seamlessly switch between light mode and dark mode according to their preference.
-
-👨‍💻 About Me
-
-A section dedicated to sharing more details about me, including my background, experience, and social media links.
-
-🗂️ Projects
-
-Showcases all my work in an organized way, where each project is represented with a thumbnail/card + description.
-
-Visitors can access both the live demo and the GitHub repository for every project.
-
-📬 Contact Section
-
-Provides multiple ways for visitors to get in touch, including a contact form and my email address.
-
-⚡ Footer
-
-A minimal footer containing copyright information.
+<div align="center">🛠️ Tech Stack</div>
+<div align="center">
+Category	Tools
+Frontend	React.js, Vite
+Styling	CSS, Icomoon custom icons
+State / Storage	Local Storage
+Animations	Framer Motion, Lottie React
+Forms	Formspree
+Build	Vite, npm
+</div>
 
 
+<div align="center">🖼️ ![preview](./public/portfolio.png)</div>
+<div align="center">
 
+</div>
+<div align="center">📌 Repository Notes</div>
 
-![preview](./public/portfolio.png)
+This is an older project that was re-uploaded after fixing a corrupted local .git folder.
+The repository has been re-initialized with a clean Git history and fully restored project structure.
+
+<div align="center">📞 Contact</div>
+<div align="center">
+
+GitHub: https://github.com/aymantarek16
+
+LinkedIn: (https://www.linkedin.com/in/ayman-tarek-617b21229/)
+Email: (aymantarekm16@gmail.com)
+
+</div>
+<div align="center">⭐ If you like this project, consider giving it a star!</div>
