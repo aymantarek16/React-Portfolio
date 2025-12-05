@@ -62,6 +62,11 @@ Build	Vite, npm
 ![preview](portfolio.png)
 </div> -->
 
+<p align="center">
+  <img src="portfolio.png" alt="preview" />
+</p>
+
+
 
 
 <div align="center">
