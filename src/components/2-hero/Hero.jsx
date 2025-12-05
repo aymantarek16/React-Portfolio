@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 
 const Hero = () => {
+  
   const lottieRef = useRef();
   return (
     <section className="hero flex" style={{ justifyContent: "space-between" }}>
