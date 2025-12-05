@@ -1,5 +1,5 @@
 <div align="center">✨ React Portfolio</div>
-<div align="center">
+<div align="center"> 
 
 A modern, fully responsive, animated personal portfolio built with React.js + Vite, showcasing my work, skills, and growth as a Front-End Developer.
 This project is continuously improved as my experience evolves.
