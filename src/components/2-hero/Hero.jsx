@@ -20,6 +20,7 @@ const Hero = () => {
             className="avatar"
             alt="ayman_avatar"
           />
+          
           <div className="icon-verified"></div>
         </div>
 
