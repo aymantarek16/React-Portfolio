@@ -1,10 +1,18 @@
 const myProjects = [
   // ========================== Next.js Projects ========================== //
-    {
+  {
+    category: "next",
+    projectTitle: "Amazon Clone",
+    subTitle:
+      "E-commerce inspired by Amazon,  built using Next.js 15, Type Script, Firebase, Stripe, Tailwind CSS",
+    imgPath: "./Projects images/Next.js/amazon-clone.png",
+    liveDemo: "https://amazon-clone-zeta-five-13.vercel.app/",
+    githup: "https://github.com/aymantarek16?tab=repositories",
+  },
+  {
     category: "next",
     projectTitle: "Business  Dashboard",
-    subTitle:
-      "Comprehensive sales dashboard for insightful business analytics",
+    subTitle:"Comprehensive sales dashboard for insightful business analytics and performance optimization.",
     imgPath: "./Projects images/Next.js/dashboard.png",
     liveDemo: "https://business-sales-dashboard.vercel.app/",
     githup: "https://github.com/aymantarek16/business-sales-dashboard",
@@ -13,12 +21,12 @@ const myProjects = [
     category: "next",
     projectTitle: "Furniture Store",
     subTitle:
-      "Modern Furniture E-commerce Store for a smooth shopping experience.",
+      "A Modern Furniture E-commerce Store for a smooth shopping experience",
     imgPath: "./Projects images/Next.js/furniture_store.png",
     liveDemo: "https://furniture-ecommerce-next-js.vercel.app/",
     githup: "https://github.com/aymantarek16/furniture-ecommerce-next.js",
   },
-    {
+  {
     category: "next",
     projectTitle: "Task-Manager",
     subTitle:
@@ -46,7 +54,7 @@ const myProjects = [
     githup: "https://github.com/aymantarek16/crypto-radar",
   },
 
-    // ========================== React.js Projects ========================== //
+  // ========================== React.js Projects ========================== //
   {
     category: "react",
     projectTitle: "Admin Dashboard",
@@ -98,7 +106,7 @@ const myProjects = [
     subTitle:
       "Highly interactive digital Tasbeeh app with smooth, responsive experience",
     imgPath: "./Projects images/React.js/sebha.png",
-    liveDemo: "https://digital-tasbeeh-flax.vercel.app/",
+    liveDemo: "https://digital-tasbeeh-33y8.vercel.app/",
     githup: "https://github.com/aymantarek16/digital-tasbeeh",
   },
 
@@ -214,7 +222,7 @@ const myProjects = [
   },
 
 
-  
+
 ];
 
 export default myProjects;
