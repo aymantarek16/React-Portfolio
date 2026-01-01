@@ -9,7 +9,7 @@ const Footer = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <p>© <span className="year">2025</span> Ayman Tarek. All rights reserved.</p>
+      <p>© <span className="year">2026</span> Ayman Tarek. All rights reserved.</p>
     </motion.footer>
   );
 };
