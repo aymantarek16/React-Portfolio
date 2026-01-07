@@ -19,6 +19,14 @@ const myProjects = [
   },
   {
     category: "next",
+    projectTitle: "Trello Pro",
+    subTitle: "A modern task management web app inspired by Trello for productive remote teams worldwide today.",
+    imgPath: "./Projects images/Next.js/trello.png",
+    liveDemo: "https://trello-pro-nine.vercel.app/",
+    githup: "https://github.com/aymantarek16/trello-pro",
+  },
+  {
+    category: "next",
     projectTitle: "Furniture Store",
     subTitle:
       "A Modern Furniture E-commerce Store for a smooth shopping experience",
