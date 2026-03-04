@@ -7,7 +7,7 @@ const myProjects = [
       "E-commerce inspired by Amazon,  built using Next.js 15, Type Script, Firebase, Stripe, Tailwind CSS",
     imgPath: "./Projects images/Next.js/amazon-clone.png",
     liveDemo: "https://amazon-clone-zeta-five-13.vercel.app/",
-    githup: "https://github.com/aymantarek16?tab=repositories",
+    githup: "https://github.com/aymantarek16/amazon-clone",
   },
   {
     category: "next",
