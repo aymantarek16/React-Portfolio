@@ -30,12 +30,12 @@ const Hero = () => {
           transition={{ duration: 1.5, type: "spring", stiffness: 80 }}
           className="title"
         >
-          Front-End Developer{" "}
+          Front-End Engineer{" "}
           <span className="highlight">& Digital Experience Designer</span>
         </motion.h1>
 
         <p className="sub-title">
-          Hi, I’m Ayman Tarek — a passionate Front-End Developer with 3+ years
+          Hi, I’m Ayman Tarek — a passionate Front-End Engineer with 3+ years
           of experience crafting fast, responsive, and engaging web
           applications. I love turning ideas into interactive digital products
           using React.js, Next.js, and modern front-end tools. My focus is on
