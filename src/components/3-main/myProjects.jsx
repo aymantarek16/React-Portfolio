@@ -27,6 +27,15 @@ const myProjects = [
   },
   {
     category: "next",
+    projectTitle: "Baber Shop",
+    subTitle:
+      "Modern RTL Arabic barber shop website with services and WhatsApp booking.",
+    imgPath: "./Projects images/Next.js/baber.png",
+    liveDemo: "https://baber-shop-six.vercel.app/",
+    githup: "https://github.com/aymantarek16/Baber-Shop",
+  },
+  {
+    category: "next",
     projectTitle: "Furniture Store",
     subTitle:
       "A Modern Furniture E-commerce Store for a smooth shopping experience",
