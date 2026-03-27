@@ -38,7 +38,7 @@ const myProjects = [
     category: "next",
     projectTitle: "Virtix Studio",
     subTitle:
-      "premium digital design agency website designed to showcase creative work",
+      "Premium digital design agency website designed to showcase creative work",
     imgPath: "./Projects images/Next.js/virtix.png",
     liveDemo: "https://virtix-studio.vercel.app/",
     githup: "https://github.com/aymantarek16/virtix-studio",
