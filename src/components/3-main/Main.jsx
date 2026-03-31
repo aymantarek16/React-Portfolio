@@ -1,281 +1,347 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./main.css";
 import myProjects from "./myProjects";
 import { AnimatePresence, motion } from "framer-motion";
 
+const categories = [
+  { id: "all", label: "All Projects", icon: "🌐" },
+  { id: "next", label: "Next.js", icon: "⚡" },
+  { id: "react", label: "React.js", icon: "⚛️" },
+  { id: "ui", label: "UI Design", icon: "🎨" },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: 20,
+    scale: 0.98,
+    transition: {
+      duration: 0.25,
+      ease: "easeOut",
+    },
+  },
+};
+
 const Main = () => {
   const [currentActive, setCurrentActive] = useState("all");
-  const [arr, setArr] = useState(myProjects);
   const [visibleCount, setVisibleCount] = useState(6);
   const [hoveredProject, setHoveredProject] = useState(null);
 
-  const categories = [
-    { id: "all", label: "All Projects", icon: "🌐" },
-    { id: "next", label: "Next.js", icon: "⚡" },
-    { id: "react", label: "React.js", icon: "⚛️" },
-    { id: "ui", label: "UI Design", icon: "🎨" }
-  ];
+  const filteredProjects = useMemo(() => {
+    if (currentActive === "all") return myProjects;
+    return myProjects.filter((item) => item.category === currentActive);
+  }, [currentActive]);
+
+  const visibleProjects = useMemo(() => {
+    return filteredProjects.slice(0, visibleCount);
+  }, [filteredProjects, visibleCount]);
 
   const handleCategoryClick = (categoryId) => {
     setCurrentActive(categoryId);
-    const newArr = categoryId === "all" 
-      ? myProjects 
-      : myProjects.filter((item) => item.category === categoryId);
-    setArr(newArr);
     setVisibleCount(6);
+    setHoveredProject(null);
   };
 
   const handleLoadMore = () => {
-    if (visibleCount >= arr.length) {
+    if (visibleCount >= filteredProjects.length) {
       setVisibleCount(6);
+
       setTimeout(() => {
-        const isMobile = window.innerWidth <= 768;
-        const offset = isMobile ? 300 : 750;
-        window.scrollTo({
-          top: window.scrollY - offset,
-          behavior: "smooth",
-        });
+        const section = document.getElementById("projects");
+        if (section) {
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
       }, 100);
     } else {
-      setVisibleCount(arr.length);
+      setVisibleCount((prev) => Math.min(prev + 6, filteredProjects.length));
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
+  const getProjectCategoryLabel = (category) => {
+    switch (category) {
+      case "next":
+        return "⚡ Next.js";
+      case "react":
+        return "⚛️ React";
+      case "ui":
+        return "🎨 UI Design";
+      default:
+        return "✨ Project";
+    }
   };
 
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-      scale: 0.9
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      }
-    },
+  const getProjectTechs = (project) => {
+    if (Array.isArray(project.techStack) && project.techStack.length > 0) {
+      return project.techStack.slice(0, 4);
+    }
+
+    switch (project.category) {
+      case "next":
+        return ["Next.js", "tailwindCss"];
+      case "react":
+        return ["React.js", "Css"];
+      case "ui":
+        return ["HTML", "CSS", "JavaScript"];
+      default:
+        return ["Frontend", "UI"];
+    }
   };
 
   return (
     <main className="projects-section" id="projects">
+      <div className="projects-bg-orb orb-1" />
+      <div className="projects-bg-orb orb-2" />
+
       <div className="projects-container">
-        {/* Header */}
-        <motion.div 
+        <motion.div
           className="projects-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
+          <span className="section-kicker">Portfolio Highlights</span>
           <h2 className="section-title">
             <span className="title-gradient">Featured Projects</span>
           </h2>
+
           <p className="section-subtitle">
-            Explore my latest work and creative solutions built with modern technologies
+            A curated selection of products, interfaces, and frontend builds
+            crafted with strong visual direction and clean user experience.
           </p>
         </motion.div>
 
-        {/* Category Filters */}
-        <motion.div 
+        <motion.div
           className="category-filters"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
           {categories.map((category) => (
             <motion.button
               key={category.id}
-              className={`category-btn ${currentActive === category.id ? "active" : ""}`}
+              type="button"
+              className={`category-btn ${
+                currentActive === category.id ? "active" : ""
+              }`}
               onClick={() => handleCategoryClick(category.id)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              aria-pressed={currentActive === category.id}
             >
               <span className="category-icon">{category.icon}</span>
               <span className="category-label">{category.label}</span>
+
               {currentActive === category.id && (
-                <motion.div 
+                <motion.div
                   className="active-indicator"
                   layoutId="activeCategory"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 28 }}
                 />
               )}
             </motion.button>
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
-        <motion.div 
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <AnimatePresence mode="wait">
-            {arr.slice(0, visibleCount).map((project, index) => (
-              <motion.article
-                key={`${project.projectTitle}-${index}`}
-                className="project-card"
-                variants={itemVariants}
-                layout
-                initial={{ opacity: 0, scale: 0.8, y: 50 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: -50 }}
-                transition={{ 
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15,
-                  delay: index * 0.05
-                }}
-                onHoverStart={() => setHoveredProject(project.projectTitle)}
-                onHoverEnd={() => setHoveredProject(null)}
-                whileHover={{ 
-                  y: -10,
-                  transition: { type: "spring", stiffness: 300, damping: 20 }
-                }}
-              >
-                {/* Project Image */}
-                <div className="project-image-container">
-                  <motion.img
-                    src={project.imgPath}
-                    alt={project.projectTitle}
-                    className="project-image"
-                    loading="lazy"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                  <div className="image-overlay" />
-                  {hoveredProject === project.projectTitle && (
-                    <motion.div 
-                      className="quick-actions"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                    >
-                      <motion.a
-                        href={project.liveDemo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="quick-action-btn primary"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <span className="icon-link" />
-                        <span>Live Demo</span>
-                      </motion.a>
-                      <motion.a
-                        href={project.githup}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="quick-action-btn secondary"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <span className="icon-github" />
-                        <span>Code</span>
-                      </motion.a>
-                    </motion.div>
-                  )}
-                </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentActive}
+            className="projects-grid"
+            variants={gridVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            {visibleProjects.map((project, index) => {
+              const githubLink = project.github || project.githup || "#";
+              const liveDemo = project.liveDemo || "#";
+              const projectId =
+                project.id || `${project.projectTitle}-${index}`;
+              const techs = getProjectTechs(project);
 
-                {/* Project Content */}
-                <div className="project-content">
-                  <div className="project-header">
-                    <h3 className="project-title">{project.projectTitle}</h3>
-                    <div className="project-category">
-                      {project.category === "next" && "⚡ Next.js"}
-                      {project.category === "react" && "⚛️ React"}
-                      {project.category === "ui" && "🎨 UI Design"}
+              return (
+                <motion.article
+                  key={projectId}
+                  className="project-card"
+                  variants={cardVariants}
+                  onHoverStart={() => setHoveredProject(projectId)}
+                  onHoverEnd={() => setHoveredProject(null)}
+                  whileHover={{ y: -8 }}
+                >
+                  <div className="project-image-container">
+                    <img
+                      src={project.imgPath}
+                      alt={project.projectTitle}
+                      className="project-image"
+                      loading="lazy"
+                    />
+
+                    <div className="image-overlay" />
+
+                    <div className="project-badge">
+                      {getProjectCategoryLabel(project.category)}
+                    </div>
+
+                    <AnimatePresence>
+                      {hoveredProject === projectId && (
+                        <motion.div
+                          className="quick-actions"
+                          initial={{ opacity: 0, y: 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 12 }}
+                          transition={{ duration: 0.25 }}
+                        >
+                          {liveDemo !== "#" && (
+                            <motion.a
+                              href={liveDemo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="quick-action-btn primary"
+                              whileHover={{ scale: 1.04 }}
+                              whileTap={{ scale: 0.98 }}
+                              aria-label={`Open live demo for ${project.projectTitle}`}
+                            >
+                              Live Demo
+                            </motion.a>
+                          )}
+
+                          {githubLink !== "#" && (
+                            <motion.a
+                              href={githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="quick-action-btn secondary"
+                              whileHover={{ scale: 1.04 }}
+                              whileTap={{ scale: 0.98 }}
+                              aria-label={`Open source code for ${project.projectTitle}`}
+                            >
+                              Source Code
+                            </motion.a>
+                          )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="project-content">
+                    <div className="project-top">
+                      <h3 className="project-title">{project.projectTitle}</h3>
+                    </div>
+
+                    <p className="project-description">{project.subTitle}</p>
+
+                    <div className="project-footer">
+                      <div className="project-tech">
+                        {techs.map((tech, techIndex) => (
+                          <span className="tech-tag" key={`${tech}-${techIndex}`}>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="project-links">
+                        {liveDemo !== "#" && (
+                          <motion.a
+                            href={liveDemo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                            whileHover={{ scale: 1.06 }}
+                            whileTap={{ scale: 0.96 }}
+                            aria-label={`Open live demo for ${project.projectTitle}`}
+                            title="Live Demo"
+                          >
+                            ↗
+                          </motion.a>
+                        )}
+
+                        {githubLink !== "#" && (
+                          <motion.a
+                            href={githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                            whileHover={{ scale: 1.06 }}
+                            whileTap={{ scale: 0.96 }}
+                            aria-label={`Open source code for ${project.projectTitle}`}
+                            title="Source Code"
+                          >
+                            {"</>"}
+                          </motion.a>
+                        )}
+                      </div>
                     </div>
                   </div>
-                  
-                  <p className="project-description">{project.subTitle}</p>
-                  
-                  <div className="project-footer">
-                    <div className="project-tech">
-                      {project.category === "next" && (
-                        <>
-                          <span className="tech-tag">Next.js</span>
-                          <span className="tech-tag">TypeScript</span>
-                        </>
-                      )}
-                      {project.category === "react" && (
-                        <>
-                          <span className="tech-tag">React</span>
-                          <span className="tech-tag">JavaScript</span>
-                        </>
-                      )}
-                      {project.category === "ui" && (
-                        <>
-                          <span className="tech-tag">HTML</span>
-                          <span className="tech-tag">CSS</span>
-                        </>
-                      )}
-                    </div>
-                    
-                    <div className="project-links">
-                      <motion.a
-                        href={project.liveDemo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link"
-                        whileHover={{ scale: 1.1, x: 2 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <span className="icon-link" />
-                      </motion.a>
-                      <motion.a
-                        href={project.githup}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link"
-                        whileHover={{ scale: 1.1, x: 2 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <span className="icon-github" />
-                      </motion.a>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Card Border Animation */}
-                <div className="card-border" />
-              </motion.article>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+                  <div className="card-border" />
+                </motion.article>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Load More Button */}
-        {arr.length > 6 && (
-          <motion.div 
+        {filteredProjects.length > 6 && (
+          <motion.div
             className="load-more-container"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
           >
             <motion.button
+              type="button"
               onClick={handleLoadMore}
               className="load-more-btn"
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ y: -2, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               <span className="btn-text">
-                {visibleCount >= arr.length ? "Show Less" : "Load More"}
+                {visibleCount >= filteredProjects.length
+                  ? "Show Less"
+                  : "Load More Projects"}
               </span>
-              <span className={`btn-icon ${visibleCount >= arr.length ? "up" : "down"}`}>
-                {visibleCount >= arr.length ? "×" : "+"}
+
+              <span
+                className={`btn-icon ${
+                  visibleCount >= filteredProjects.length ? "up" : "down"
+                }`}
+              >
+                {visibleCount >= filteredProjects.length ? "−" : "+"}
               </span>
             </motion.button>
           </motion.div>
