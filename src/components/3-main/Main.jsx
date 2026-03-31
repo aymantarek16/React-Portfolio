@@ -4,137 +4,283 @@ import myProjects from "./myProjects";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Main = () => {
-  const [currentActive, setcurrentActive] = useState("all");
+  const [currentActive, setCurrentActive] = useState("all");
   const [arr, setArr] = useState(myProjects);
   const [visibleCount, setVisibleCount] = useState(6);
+  const [hoveredProject, setHoveredProject] = useState(null);
 
-  const handleBtnClick = (e) => {
-    setcurrentActive(e);
-    const newArr = myProjects.filter((item) => {
-      return item.category === e;
-    });
+  const categories = [
+    { id: "all", label: "All Projects", icon: "🌐" },
+    { id: "next", label: "Next.js", icon: "⚡" },
+    { id: "react", label: "React.js", icon: "⚛️" },
+    { id: "ui", label: "UI Design", icon: "🎨" }
+  ];
+
+  const handleCategoryClick = (categoryId) => {
+    setCurrentActive(categoryId);
+    const newArr = categoryId === "all" 
+      ? myProjects 
+      : myProjects.filter((item) => item.category === categoryId);
     setArr(newArr);
     setVisibleCount(6);
   };
 
-const handleLoadMore = () => {
-  if (visibleCount >= arr.length) {
-    setVisibleCount(6);
+  const handleLoadMore = () => {
+    if (visibleCount >= arr.length) {
+      setVisibleCount(6);
+      setTimeout(() => {
+        const isMobile = window.innerWidth <= 768;
+        const offset = isMobile ? 300 : 750;
+        window.scrollTo({
+          top: window.scrollY - offset,
+          behavior: "smooth",
+        });
+      }, 100);
+    } else {
+      setVisibleCount(arr.length);
+    }
+  };
 
-    // Scroll up after updating visibleCount
-    setTimeout(() => {
-      const isMobile = window.innerWidth <= 768;
-      const offset = isMobile ? 300 : 750;
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
 
-      window.scrollTo({
-        top: window.scrollY - offset,
-        behavior: "smooth",
-      });
-    }, 100);
-  } else {
-    setVisibleCount(arr.length);
-  }
-};
-
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      scale: 0.9
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      }
+    },
+  };
 
   return (
-    <main className="flex">
-      <section className="left-section flex">
-        <button
-          onClick={() => {
-            setcurrentActive("all");
-            setArr(myProjects);
-            setVisibleCount(6);
-          }}
-          className={currentActive === "all" ? "active" : null}
+    <main className="projects-section" id="projects">
+      <div className="projects-container">
+        {/* Header */}
+        <motion.div 
+          className="projects-header"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          all projects
-        </button>
-        {/* Next */}
-        <button
-          onClick={() => {
-            handleBtnClick("next");
-          }}
-          className={currentActive === "next" ? "active" : null}
-        >
-          Next.js
-        </button>
-        {/* React */}
-        <button
-          onClick={() => {
-            handleBtnClick("react");
-          }}
-          className={currentActive === "react" ? "active" : null}
-        >
-          React.js
-        </button>
-        {/* Ui */}
-        <button
-          onClick={() => {
-            handleBtnClick("ui");
-          }}
-          className={currentActive === "ui" ? "active" : null}
-        >
-          Ui
-        </button>
-      </section>
+          <h2 className="section-title">
+            <span className="title-gradient">Featured Projects</span>
+          </h2>
+          <p className="section-subtitle">
+            Explore my latest work and creative solutions built with modern technologies
+          </p>
+        </motion.div>
 
-      <section className="flex right-section">
-        <AnimatePresence>
-          {arr.slice(0, visibleCount).map((item, index) => {
-            return (
+        {/* Category Filters */}
+        <motion.div 
+          className="category-filters"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          {categories.map((category) => (
+            <motion.button
+              key={category.id}
+              className={`category-btn ${currentActive === category.id ? "active" : ""}`}
+              onClick={() => handleCategoryClick(category.id)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="category-icon">{category.icon}</span>
+              <span className="category-label">{category.label}</span>
+              {currentActive === category.id && (
+                <motion.div 
+                  className="active-indicator"
+                  layoutId="activeCategory"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <motion.div 
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <AnimatePresence mode="wait">
+            {arr.slice(0, visibleCount).map((project, index) => (
               <motion.article
-                key={index}
+                key={`${project.projectTitle}-${index}`}
+                className="project-card"
+                variants={itemVariants}
                 layout
-                initial={{ transform: "scale(0.6)" }}
-                animate={{ transform: "scale(1)" }}
-                transition={{ type: "spring", damping: 8, stiffness: 50 }}
-                className="card"
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: -50 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                  delay: index * 0.05
+                }}
+                onHoverStart={() => setHoveredProject(project.projectTitle)}
+                onHoverEnd={() => setHoveredProject(null)}
+                whileHover={{ 
+                  y: -10,
+                  transition: { type: "spring", stiffness: 300, damping: 20 }
+                }}
               >
-                <img width={266} src={item.imgPath} alt="" />
+                {/* Project Image */}
+                <div className="project-image-container">
+                  <motion.img
+                    src={project.imgPath}
+                    alt={project.projectTitle}
+                    className="project-image"
+                    loading="lazy"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                  <div className="image-overlay" />
+                  {hoveredProject === project.projectTitle && (
+                    <motion.div 
+                      className="quick-actions"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                    >
+                      <motion.a
+                        href={project.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="quick-action-btn primary"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <span className="icon-link" />
+                        <span>Live Demo</span>
+                      </motion.a>
+                      <motion.a
+                        href={project.githup}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="quick-action-btn secondary"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <span className="icon-github" />
+                        <span>Code</span>
+                      </motion.a>
+                    </motion.div>
+                  )}
+                </div>
 
-                <div style={{ width: "266px" }} className="box">
-                  <h1 className="title">{item.projectTitle}</h1>
-                  <p className="sub-title">{item.subTitle}</p>
-
-                  <div className="flex icons">
-                    <a
-                      className="icon-link"
-                      href={item.liveDemo}
-                      target="_blank"
-                    ></a>
-                    <a
-                      className="icon-github"
-                      href={item.githup}
-                      target="_blank"
-                    ></a>
+                {/* Project Content */}
+                <div className="project-content">
+                  <div className="project-header">
+                    <h3 className="project-title">{project.projectTitle}</h3>
+                    <div className="project-category">
+                      {project.category === "next" && "⚡ Next.js"}
+                      {project.category === "react" && "⚛️ React"}
+                      {project.category === "ui" && "🎨 UI Design"}
+                    </div>
+                  </div>
+                  
+                  <p className="project-description">{project.subTitle}</p>
+                  
+                  <div className="project-footer">
+                    <div className="project-tech">
+                      {project.category === "next" && (
+                        <>
+                          <span className="tech-tag">Next.js</span>
+                          <span className="tech-tag">TypeScript</span>
+                        </>
+                      )}
+                      {project.category === "react" && (
+                        <>
+                          <span className="tech-tag">React</span>
+                          <span className="tech-tag">JavaScript</span>
+                        </>
+                      )}
+                      {project.category === "ui" && (
+                        <>
+                          <span className="tech-tag">HTML</span>
+                          <span className="tech-tag">CSS</span>
+                        </>
+                      )}
+                    </div>
+                    
+                    <div className="project-links">
+                      <motion.a
+                        href={project.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link"
+                        whileHover={{ scale: 1.1, x: 2 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <span className="icon-link" />
+                      </motion.a>
+                      <motion.a
+                        href={project.githup}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link"
+                        whileHover={{ scale: 1.1, x: 2 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <span className="icon-github" />
+                      </motion.a>
+                    </div>
                   </div>
                 </div>
-              </motion.article>
-            );
-          })}
-        </AnimatePresence>
 
-        {/*Load More / Show Less */}
+                {/* Card Border Animation */}
+                <div className="card-border" />
+              </motion.article>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Load More Button */}
         {arr.length > 6 && (
-          <button
-            onClick={handleLoadMore}
-            style={{
-              marginTop: "20px",
-              padding: "10px 20px",
-              borderRadius: "8px",
-              border: "none",
-              background: "linear-gradient(135deg, var(--blue), var(--purple))",
-              color: "#fff",
-              cursor: "pointer",
-              fontWeight: "500",
-              boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)",
-            }}
+          <motion.div 
+            className="load-more-container"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {visibleCount >= arr.length ? "Show Less" : "Load More"}
-          </button>
+            <motion.button
+              onClick={handleLoadMore}
+              className="load-more-btn"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="btn-text">
+                {visibleCount >= arr.length ? "Show Less" : "Load More"}
+              </span>
+              <span className={`btn-icon ${visibleCount >= arr.length ? "up" : "down"}`}>
+                {visibleCount >= arr.length ? "×" : "+"}
+              </span>
+            </motion.button>
+          </motion.div>
         )}
-      </section>
+      </div>
     </main>
   );
 };
