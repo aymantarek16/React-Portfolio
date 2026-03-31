@@ -134,7 +134,6 @@ const Main = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <span className="section-kicker">Portfolio Highlights</span>
           <h2 className="section-title">
             <span className="title-gradient">Featured Projects</span>
           </h2>
