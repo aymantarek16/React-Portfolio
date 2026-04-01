@@ -164,20 +164,23 @@
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .contact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-3);
-  padding: var(--space-2) 0;
+  padding: var(--space-3) 0;
+  transition: all 0.3s ease;
 }
 
 .contact-icon {
   font-size: var(--text-lg);
-  margin-top: 2px;
+  margin-top: 0;
   flex-shrink: 0;
+  min-width: 24px;
+  text-align: center;
 }
 
 .contact-link {
@@ -355,7 +358,7 @@ button.bottom-link {
   
   .footer-content {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: var(--space-6);
     text-align: center;
   }
   
@@ -382,9 +385,23 @@ button.bottom-link {
     transform: translateX(-50%);
   }
   
+  .contact-info {
+    gap: var(--space-3);
+  }
+  
   .contact-item {
     justify-content: center;
     text-align: center;
+    padding: var(--space-2) 0;
+  }
+  
+  .contact-icon {
+    font-size: var(--text-xl);
+  }
+  
+  .contact-link,
+  .contact-text {
+    font-size: var(--text-sm);
   }
   
   .tech-stack {
