@@ -4,55 +4,79 @@ import LazyLottie from "../LazyLottie";
 import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
+const socialLinks = [
+  {
+    icon: "icon-linkedin",
+    href: "https://www.linkedin.com/in/ayman-tarek-617b21229/",
+    label: "LinkedIn",
+  },
+  {
+    icon: "icon-github",
+    href: "https://github.com/aymantarek16?tab=repositories",
+    label: "GitHub",
+  },
+  {
+    icon: "icon-instagram",
+    href: "https://www.instagram.com/ayman_tarek74",
+    label: "Instagram",
+  },
+  {
+    icon: "icon-twitter",
+    href: "https://twitter.com/aymantarekm17",
+    label: "Twitter",
+  },
+];
+
+const stats = [
+  { value: "+3", label: "Years Experience" },
+  { value: "+20", label: "Projects Shipped" },
+  { value: "100%", label: "Focus on UX" },
+];
+
 const Hero = () => {
   const lottieRef = useRef();
   const containerRef = useRef();
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
-  
-  const y = useTransform(scrollYProgress, [0.2, 1], [0, 200]);
-  
-  const opacity = useTransform(scrollYProgress, [0.50, 0.6], [1, 0]);
-  
-  const scale = useTransform(scrollYProgress, [0.25, 0.6], [1, 0.8]);
-  
-  // smoothing
-  const smoothY = useSpring(y, { stiffness: 100, damping: 20 });
-  const smoothOpacity = useSpring(opacity, { stiffness: 100, damping: 20 });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  // const opacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0.25, 0.75], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.96]);
+
+  const smoothY = useSpring(y, { stiffness: 120, damping: 22 });
+  const smoothOpacity = useSpring(opacity, { stiffness: 120, damping: 22 });
 
   useEffect(() => {
-    if (lottieRef.current) {
-      lottieRef.current.setSpeed(0.3);
-    }
+    lottieRef.current?.setSpeed?.(0.35);
   }, []);
 
   return (
-    <section ref={containerRef} className="hero" id="hero">
-      {/* Background Elements */}
-      <div className="hero-background">
-        <div className="hero-gradient-1" />
-        <div className="hero-gradient-2" />
-        <div className="hero-particles" />
+    <section
+      ref={containerRef}
+      className="hero"
+      id="hero"
+      aria-label="Introduction"
+    >
+      <div className="hero-background" aria-hidden>
+        <div className="hero-gradient hero-gradient--primary" />
+        <div className="hero-gradient hero-gradient--secondary" />
+        <div className="hero-noise" />
         <div className="hero-grid" />
       </div>
 
       <div className="hero-container">
         <div className="hero-content">
-          {/* Avatar Section */}
-          <motion.div 
+          <motion.div
             className="avatar-container"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div 
-              className="avatar-wrapper"
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
+            <div className="avatar-wrapper">
               <motion.img
                 src="./ayman.png"
                 className="avatar"
@@ -61,114 +85,123 @@ const Hero = () => {
                 height={280}
                 decoding="async"
                 loading="eager"
-                initial={{ scale: 0.8, opacity: 0 }}
+                initial={{ scale: 0.92, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: 0.4,
-                  type: "spring",
-                  stiffness: 100
+                transition={{
+                  duration: 0.9,
+                  delay: 0.15,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
-                whileHover={{ scale: 1.1 }}
               />
-              <div className="avatar-ring" />
-              <motion.div 
+              <div className="avatar-ring" aria-hidden />
+              <motion.div
                 className="verified-badge"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
+                transition={{ duration: 0.45, delay: 0.65 }}
+                aria-hidden
               >
                 <span className="icon-verified" />
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Main Title */}
-          <motion.div 
-            className="title-container"
+          <motion.div
+            className="title-block"
             style={{ y: smoothY, opacity: smoothOpacity, scale }}
           >
-            <motion.h1 
+            
+
+            <motion.h1
               className="hero-title"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 1, 
-                delay: 0.6,
-                type: "spring",
-                stiffness: 100
+              transition={{
+                duration: 0.75,
+                delay: 0.35,
+                ease: [0.22, 1, 0.36, 1],
               }}
             >
               <span className="title-line">
-                <span className="title-text">Front-End</span>
+                <span className="title-text">Front-End</span>{" "}
                 <span className="title-accent">Engineer</span>
               </span>
               <span className="title-line">
-                <span className="title-text">&</span>
-                <span className="title-accent">Digital</span>
+                <span className="title-text">&amp;</span>{" "}
+                <span className="title-accent">Digital</span>{" "}
                 <span className="title-text">Experience</span>
               </span>
               <span className="title-line">
                 <span className="title-accent">Designer</span>
               </span>
             </motion.h1>
+
+            <motion.p
+              className="hero-desc"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.5 }}
+            >
+              Hi, I&apos;m <strong className="hero-name">Ayman Tarek</strong>
+              — I build fast, accessible interfaces with{" "}
+              <span className="hero-desc__emphasis">React</span> &{" "}
+              <span className="hero-desc__emphasis">Next.js</span>, turning
+              product ideas into polished web experiences.
+            </motion.p>
+
+            <motion.ul
+              className="hero-stats"
+              role="list"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.58 }}
+            >
+              {stats.map((item) => (
+                <li key={item.label} className="hero-stat">
+                  <span className="hero-stat__value">{item.value}</span>
+                  <span className="hero-stat__label">{item.label}</span>
+                </li>
+              ))}
+            </motion.ul>
           </motion.div>
 
-          {/* Subtitle */}
-          <motion.p 
-            className="hero-subtitle"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            style={{ y: smoothY, opacity: smoothOpacity }}
-          >
-            Hi, I&apos;m <span className="highlight">Ayman Tarek</span> — a passionate Front-End Engineer with 3+ years of experience crafting fast, responsive, and engaging web applications. I love turning ideas into interactive digital products using React.js, Next.js, and modern front-end tools.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div 
+          <motion.div
             className="cta-container"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.65, delay: 0.72 }}
             style={{ y: smoothY, opacity: smoothOpacity }}
           >
-            <motion.a 
-              href="/Front End Developer Cv.pdf" 
-              download 
+            <motion.a
+              href="/Front End Developer Cv.pdf"
+              download
               className="cta-primary"
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
               <span className="cta-text">Download CV</span>
-              <span className="cta-icon icon-arrow-right" />
+              <span className="cta-icon icon-arrow-right" aria-hidden />
             </motion.a>
-            
-            <motion.a 
-              href="#contact" 
+
+            <motion.a
+              href="#contact"
               className="cta-secondary"
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
               <span className="cta-text">Get In Touch</span>
-              <span className="cta-icon icon-envelope" />
+              <span className="cta-icon icon-envelope" aria-hidden />
             </motion.a>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div 
+          <motion.div
             className="social-container"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
+            transition={{ duration: 0.6, delay: 0.85 }}
             style={{ y: smoothY, opacity: smoothOpacity }}
           >
-            {[
-              { icon: "icon-linkedin", href: "https://www.linkedin.com/in/ayman-tarek-617b21229/", label: "LinkedIn" },
-              { icon: "icon-github", href: "https://github.com/aymantarek16?tab=repositories", label: "GitHub" },
-              { icon: "icon-instagram", href: "https://www.instagram.com/ayman_tarek74", label: "Instagram" },
-              { icon: "icon-twitter", href: "https://twitter.com/aymantarekm17", label: "Twitter" }
-            ].map((social, index) => (
+            {socialLinks.map((social, index) => (
               <motion.a
                 key={social.label}
                 href={social.href}
@@ -176,32 +209,29 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="social-link"
                 aria-label={social.label}
-                initial={{ scale: 0, opacity: 0 }}
+                initial={{ scale: 0.85, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ 
-                  delay: 1.6 + index * 0.1,
+                transition={{
+                  delay: 0.9 + index * 0.06,
                   type: "spring",
-                  stiffness: 200
+                  stiffness: 260,
+                  damping: 22,
                 }}
-                whileHover={{ 
-                  scale: 1.2, 
-                  y: -5,
-                  boxShadow: "0 10px 25px rgba(99, 102, 241, 0.3)"
-                }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.08, y: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span className={social.icon} />
+                <span className={social.icon} aria-hidden />
               </motion.a>
             ))}
           </motion.div>
         </div>
 
-        {/* Animation Section */}
-        <motion.div 
+        <motion.div
           className="hero-animation"
-          initial={{ opacity: 0, x: 100 }}
+          aria-hidden
+          initial={{ opacity: 0, x: 48 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
+          transition={{ duration: 0.85, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           style={{ y: smoothY, opacity: smoothOpacity }}
         >
           <div className="animation-wrapper">
@@ -215,19 +245,14 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         className="scroll-indicator"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 2 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
       >
-        <motion.div 
-          className="scroll-dot"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-        <span className="scroll-text">Scroll to explore</span>
+        <span className="scroll-line" aria-hidden />
+        <span className="scroll-text">Scroll</span>
       </motion.div>
     </section>
   );
