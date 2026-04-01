@@ -3,6 +3,18 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          motion: ['framer-motion'],
+          lottie: ['lottie-react'],
+          forms: ['@formspree/react'],
+        },
+      },
+    },
+    cssMinify: true,
+  },
   plugins: [
     react(),
     VitePWA({
@@ -12,8 +24,8 @@ export default defineConfig({
         short_name: 'Portfolio',
         start_url: '.',
         display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#000000',
+        background_color: '#0a0a0a',
+        theme_color: '#0a0a0a',
         icons: [
           {
             src: '/icons/ayman-192.png',

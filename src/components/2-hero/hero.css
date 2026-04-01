@@ -430,7 +430,7 @@
   
   .hero-animation {
     order: -1;
-    display : none
+    display: none;
   }
   
   .animation-wrapper {
@@ -438,8 +438,8 @@
     height: 300px;
   }
 
-  .scroll-text{
-    display : none
+  .scroll-text {
+    display: none;
   }
 }
 

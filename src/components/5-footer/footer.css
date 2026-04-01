@@ -266,6 +266,14 @@
   transition: color 0.3s ease;
 }
 
+button.bottom-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
 .bottom-link:hover {
   color: var(--accent-primary);
 }

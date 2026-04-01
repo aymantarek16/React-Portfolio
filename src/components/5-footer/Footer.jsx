@@ -47,7 +47,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer-container">
         {/* Footer Content */}
         <motion.div 
@@ -151,20 +151,20 @@ const Footer = () => {
               &copy; {currentYear} Ayman Tarek. All rights reserved.
             </p>
             <div className="bottom-links">
-              <motion.a
-                href="#privacy"
+              <motion.button
+                type="button"
                 className="bottom-link"
                 whileHover={{ scale: 1.05 }}
               >
                 Privacy Policy
-              </motion.a>
-              <motion.a
-                href="#terms"
+              </motion.button>
+              <motion.button
+                type="button"
                 className="bottom-link"
                 whileHover={{ scale: 1.05 }}
               >
                 Terms of Service
-              </motion.a>
+              </motion.button>
             </div>
           </div>
           

@@ -1,100 +1,78 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./header.css";
 
+const navLinks = [
+  { href: "#hero", label: "Home" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
+
 const Header = () => {
-  // const [showModal, setshowModal] = useState(false);
   const [theme, setTheme] = useState(
-    localStorage.getItem("currentTheme") || "dark"
+    () => localStorage.getItem("currentTheme") || "dark"
   );
 
   useEffect(() => {
-    if (theme === "light") {
-      document.body.classList.remove("dark");
-      document.body.classList.add("light");
-    } else {
-      document.body.classList.remove("light");
-      document.body.classList.add("dark");
-    }
+    document.body.classList.toggle("light", theme === "light");
+    document.body.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("currentTheme", next);
+    setTheme(next);
+  };
+
+  const handleNavClick = useCallback((e, href) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    const id = href.slice(1);
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, []);
+
   return (
-    <header className="flex">
-      {/* <button
-        onClick={() => {
-          setshowModal(true);
-        }}
-        className="menu icon-menu flex"
-      /> */}
+    <header className="site-header">
+      <div className="site-header-inner">
+        <a
+          href="#hero"
+          className="site-logo"
+          onClick={(e) => handleNavClick(e, "#hero")}
+        >
+          AT.
+        </a>
 
-      
-    
-
-      {/* Dark / Light Mode */}
-      <button
-        className="mode flex"
-        onClick={() => {
-          localStorage.setItem(
-            "currentTheme",
-            theme === "dark" ? "light" : "dark"
-          );
-          setTheme(localStorage.getItem("currentTheme"));
-        }}
-      >
-        <span className={theme === "dark" ? "icon-moon-o" : "icon-sun"}></span>
-      </button>
-
-  
-
-      {/* Nav Links */}
-      {/* <nav>
-        <ul className="flex">
-          <li>
-            <a href="">About</a>
-          </li>
-          <li>
-            <a href="">Articles</a>
-          </li>
-          <li>
-            <a href="">Projects</a>
-          </li>
-          <li>
-            <a href="">Speaking</a>
-          </li>
-          <li>
-            <a href="">Contact</a>
-          </li>
-        </ul>
-      </nav> */}
-
-      {/* {showModal && (
-        <div className="fixed">
-          <ul className="modal">
-            <li>
-              <button
-                className="icon-close"
-                onClick={() => {
-                  setshowModal(false);
-                }}
-              />
-            </li>
-            <li>
-              <a href="">About</a>
-            </li>
-            <li>
-              <a href="">Articles</a>
-            </li>
-            <li>
-              <a href="">Projects</a>
-            </li>
-            <li>
-              <a href="">Speaking</a>
-            </li>
-            <li>
-              <a href="">Contact</a>
-            </li>
+        <nav className="site-nav" aria-label="Primary">
+          <ul>
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
-        </div>
-      )} */}
+        </nav>
+
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={
+            theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+          }
+        >
+          <span
+            className={theme === "dark" ? "icon-moon-o" : "icon-sun"}
+            aria-hidden
+          />
+        </button>
+      </div>
     </header>
   );
 };

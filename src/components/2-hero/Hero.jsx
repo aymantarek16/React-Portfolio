@@ -1,7 +1,6 @@
-/* eslint-disable react/no-unescaped-entities */
 import "./hero.css";
 import devAnimation from "../../animation/dev.json";
-import Lottie from "lottie-react";
+import LazyLottie from "../LazyLottie";
 import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
@@ -54,7 +53,11 @@ const Hero = () => {
               <motion.img
                 src="./ayman.png"
                 className="avatar"
-                alt="ayman_avatar"
+                alt="Portrait of Ayman Tarek"
+                width={280}
+                height={280}
+                decoding="async"
+                loading="eager"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ 
@@ -116,7 +119,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.9 }}
             style={{ y: smoothY, opacity: smoothOpacity }}
           >
-            Hi, I'm <span className="highlight">Ayman Tarek</span> — a passionate Front-End Engineer with 3+ years of experience crafting fast, responsive, and engaging web applications. I love turning ideas into interactive digital products using React.js, Next.js, and modern front-end tools.
+            Hi, I&apos;m <span className="highlight">Ayman Tarek</span> — a passionate Front-End Engineer with 3+ years of experience crafting fast, responsive, and engaging web applications. I love turning ideas into interactive digital products using React.js, Next.js, and modern front-end tools.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -199,7 +202,7 @@ const Hero = () => {
           style={{ y: smoothY, opacity: smoothOpacity }}
         >
           <div className="animation-wrapper">
-            <Lottie
+            <LazyLottie
               lottieRef={lottieRef}
               animationData={devAnimation}
               className="lottie-animation"

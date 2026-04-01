@@ -1,39 +1,44 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, lazy, Suspense } from "react";
 import Hero from "./components/2-hero/Hero";
-import Main from "./components/3-main/Main";
-import Contact from "./components/4-contact/Contact";
-import Footer from "./components/5-footer/Footer";
 import Header from "./components/1-header/Header";
+
+const Main = lazy(() => import("./components/3-main/Main"));
+const Contact = lazy(() => import("./components/4-contact/Contact"));
+const Footer = lazy(() => import("./components/5-footer/Footer"));
+
+function SectionFallback() {
+  return (
+    <div
+      className="section-fallback"
+      aria-busy="true"
+      aria-label="Loading section"
+    />
+  );
+
+}
 
 function App() {
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const scrollTimeoutRef = useRef(null);
-  const lastScrollY = useRef(0);
+  const showScrollRef = useRef(false);
 
   const handleScroll = useCallback(() => {
-    // Clear existing timeout
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
 
-    // Throttle scroll events
     scrollTimeoutRef.current = setTimeout(() => {
       const currentScrollY = window.scrollY;
       const shouldShow = currentScrollY > 300;
-      
-      // Only update state if value actually changed
-      if (shouldShow !== showScrollBtn) {
+      if (shouldShow !== showScrollRef.current) {
+        showScrollRef.current = shouldShow;
         setShowScrollBtn(shouldShow);
       }
-      
-      lastScrollY.current = currentScrollY;
-    }, 16); // ~60fps
-  }, [showScrollBtn]);
+    }, 16);
+  }, []);
 
   useEffect(() => {
-    // Use passive listener for better performance
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (scrollTimeoutRef.current) {
@@ -43,28 +48,23 @@ function App() {
   }, [handleScroll]);
 
   const scrollToTop = useCallback(() => {
-    // Use performance-oriented scroll
-    if ('scrollBehavior' in document.documentElement.style) {
+    if ("scrollBehavior" in document.documentElement.style) {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
     } else {
-      // Fallback for older browsers
       const startPosition = window.pageYOffset;
       const startTime = performance.now();
-      
+
       const animateScroll = (currentTime) => {
         const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / 500, 1); // 500ms duration
-        
+        const progress = Math.min(elapsed / 500, 1);
         window.scrollTo(0, startPosition * (1 - progress));
-        
         if (progress < 1) {
           requestAnimationFrame(animateScroll);
         }
       };
-      
       requestAnimationFrame(animateScroll);
     }
   }, []);
@@ -74,20 +74,26 @@ function App() {
       <Header />
       <Hero />
       <div className="divider" />
-      <Main />
+      <Suspense fallback={<SectionFallback />}>
+        <Main />
+      </Suspense>
       <div className="divider" />
-      <Contact />
+      <Suspense fallback={<SectionFallback />}>
+        <Contact />
+      </Suspense>
       <div className="divider" />
-      <Footer />
+      <Suspense fallback={<SectionFallback />}>
+        <Footer />
+      </Suspense>
 
-      {/* Enhanced Scroll to Top Button */}
       {showScrollBtn && (
         <button
+          type="button"
           onClick={scrollToTop}
-          className={`scroll2Top visible`}
+          className="scroll2Top visible"
           aria-label="Scroll to top"
         >
-          <span className="icon-keyboard_arrow_up" />
+          <span className="icon-keyboard_arrow_up" aria-hidden />
         </button>
       )}
     </div>

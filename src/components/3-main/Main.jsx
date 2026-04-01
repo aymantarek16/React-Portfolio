@@ -56,7 +56,6 @@ const cardVariants = {
 const Main = () => {
   const [currentActive, setCurrentActive] = useState("all");
   const [visibleCount, setVisibleCount] = useState(6);
-  const [hoveredProject, setHoveredProject] = useState(null);
 
   const filteredProjects = useMemo(() => {
     if (currentActive === "all") return myProjects;
@@ -70,7 +69,6 @@ const Main = () => {
   const handleCategoryClick = (categoryId) => {
     setCurrentActive(categoryId);
     setVisibleCount(6);
-    setHoveredProject(null);
   };
 
   const handleLoadMore = () => {
@@ -123,8 +121,8 @@ const Main = () => {
 
   return (
     <main className="projects-section" id="projects">
-      <div className="projects-bg-orb orb-1" />
-      <div className="projects-bg-orb orb-2" />
+      <div className="projects-bg-orb orb-1" aria-hidden />
+      <div className="projects-bg-orb orb-2" aria-hidden />
 
       <div className="projects-container">
         <motion.div
@@ -198,9 +196,7 @@ const Main = () => {
                   key={projectId}
                   className="project-card"
                   variants={cardVariants}
-                  onHoverStart={() => setHoveredProject(projectId)}
-                  onHoverEnd={() => setHoveredProject(null)}
-                  whileHover={{ y: -8 }}
+                  tabIndex={0}
                 >
                   <div className="project-image-container">
                     <img
@@ -208,53 +204,40 @@ const Main = () => {
                       alt={project.projectTitle}
                       className="project-image"
                       loading="lazy"
+                      decoding="async"
                     />
 
-                    <div className="image-overlay" />
+                    <div className="image-overlay" aria-hidden />
 
                     <div className="project-badge">
                       {getProjectCategoryLabel(project.category)}
                     </div>
 
-                    <AnimatePresence>
-                      {hoveredProject === projectId && (
-                        <motion.div
-                          className="quick-actions"
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 12 }}
-                          transition={{ duration: 0.25 }}
+                    <div className="quick-actions">
+                      {liveDemo !== "#" && (
+                        <a
+                          href={liveDemo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="quick-action-btn primary"
+                          aria-label={`Open live demo for ${project.projectTitle}`}
                         >
-                          {liveDemo !== "#" && (
-                            <motion.a
-                              href={liveDemo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="quick-action-btn primary"
-                              whileHover={{ scale: 1.04 }}
-                              whileTap={{ scale: 0.98 }}
-                              aria-label={`Open live demo for ${project.projectTitle}`}
-                            >
-                              Live Demo
-                            </motion.a>
-                          )}
-
-                          {githubLink !== "#" && (
-                            <motion.a
-                              href={githubLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="quick-action-btn secondary"
-                              whileHover={{ scale: 1.04 }}
-                              whileTap={{ scale: 0.98 }}
-                              aria-label={`Open source code for ${project.projectTitle}`}
-                            >
-                              Source Code
-                            </motion.a>
-                          )}
-                        </motion.div>
+                          Live Demo
+                        </a>
                       )}
-                    </AnimatePresence>
+
+                      {githubLink !== "#" && (
+                        <a
+                          href={githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="quick-action-btn secondary"
+                          aria-label={`Open source code for ${project.projectTitle}`}
+                        >
+                          Source Code
+                        </a>
+                      )}
+                    </div>
                   </div>
 
                   <div className="project-content">
@@ -267,7 +250,10 @@ const Main = () => {
                     <div className="project-footer">
                       <div className="project-tech">
                         {techs.map((tech, techIndex) => (
-                          <span className="tech-tag" key={`${tech}-${techIndex}`}>
+                          <span
+                            className="tech-tag"
+                            key={`${tech}-${techIndex}`}
+                          >
                             {tech}
                           </span>
                         ))}
@@ -307,7 +293,7 @@ const Main = () => {
                     </div>
                   </div>
 
-                  <div className="card-border" />
+                  <div className="card-border" aria-hidden />
                 </motion.article>
               );
             })}

@@ -303,7 +303,19 @@
   background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
   opacity: 0.1;
   filter: blur(40px);
-  animation: pulse 4s ease-in-out infinite;
+  animation: contactGlow 5s ease-in-out infinite;
+}
+
+@keyframes contactGlow {
+  0%,
+  100% {
+    opacity: 0.08;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.14;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
 }
 
 /* === Contact Info Cards === */

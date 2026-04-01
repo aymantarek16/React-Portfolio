@@ -100,9 +100,16 @@
   --radius-full: 9999px;
   
   /* === Layout === */
-  --container-padding: 3rem;
-  --container-max-width: 1400px;
-  --section-gap: 6rem;
+  --container-padding: clamp(1rem, 4vw, 3rem);
+  --container-max-width: 1200px;
+  --section-gap: clamp(3rem, 8vw, 6rem);
+  --header-height: 3.5rem;
+
+  /* Legacy aliases (older components) */
+  --bgHeader: rgba(26, 26, 26, 0.85);
+  --border: var(--border-primary);
+  --title: var(--title-primary);
+  --purple-light: var(--accent-primary);
 }
 
 /* === Light Mode === */
@@ -150,6 +157,8 @@
   --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
   --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.2);
   --shadow-glow-lg: 0 0 40px rgba(79, 70, 229, 0.3);
+
+  --bgHeader: rgba(248, 249, 250, 0.92);
 }
 
 /* ========================
@@ -353,7 +362,39 @@ a {
 
 a:hover {
   color: var(--accent-secondary);
-  transform: translateY(-1px);
+}
+
+a:active {
+  color: var(--accent-tertiary);
+}
+
+/* Deferred route-level sections */
+.section-fallback {
+  min-height: clamp(10rem, 28vh, 22rem);
+  width: 100%;
+  border-radius: var(--radius-2xl);
+  margin: 0 var(--container-padding);
+  max-width: calc(var(--container-max-width) - var(--container-padding) * 2);
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(
+    90deg,
+    var(--glass-bg) 0%,
+    var(--surface-elevated) 50%,
+    var(--glass-bg) 100%
+  );
+  background-size: 200% 100%;
+  animation: sectionShimmer 1.2s ease-in-out infinite;
+  border: 1px solid var(--border-secondary);
+}
+
+@keyframes sectionShimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
 }
 
 /* ========================
@@ -396,17 +437,15 @@ a:hover {
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(2px 2px at 20% 30%, rgba(99, 102, 241, 0.3), transparent),
-    radial-gradient(2px 2px at 60% 70%, rgba(139, 92, 246, 0.3), transparent),
-    radial-gradient(1px 1px at 50% 50%, rgba(236, 72, 153, 0.3), transparent),
-    radial-gradient(1px 1px at 80% 20%, rgba(99, 102, 241, 0.3), transparent),
-    radial-gradient(2px 2px at 10% 80%, rgba(139, 92, 246, 0.3), transparent);
-  background-size: 400px 400px, 300px 300px, 200px 200px, 350px 350px, 250px 250px;
-  background-position: 0% 0%, 20% 20%, 40% 40%, 60% 60%, 80% 80%;
-  animation: particlesMove 30s linear infinite;
+    radial-gradient(2px 2px at 20% 30%, rgba(99, 102, 241, 0.22), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(139, 92, 246, 0.22), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(236, 72, 153, 0.18), transparent);
+  background-size: 420px 420px, 360px 360px, 280px 280px;
+  background-position: 0% 0%, 30% 40%, 60% 20%;
+  animation: particlesMove 45s linear infinite;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.6;
+  opacity: 0.45;
 }
 
 /* === Background Animations - Optimized === */
@@ -420,11 +459,11 @@ a:hover {
 }
 
 @keyframes particlesMove {
-  0% { 
-    background-position: 0% 0%, 20% 20%, 40% 40%, 60% 60%, 80% 80%;
+  0% {
+    background-position: 0% 0%, 30% 40%, 60% 20%;
   }
-  100% { 
-    background-position: 100% 100%, 80% 80%, 60% 60%, 40% 40%, 20% 20%;
+  100% {
+    background-position: 100% 80%, 70% 10%, 20% 90%;
   }
 }
 
@@ -445,13 +484,12 @@ a:hover {
 }
 
 .light .app::after {
-  opacity: 0.3;
+  opacity: 0.28;
   background-image: 
-    radial-gradient(2px 2px at 20% 30%, rgba(99, 102, 241, 0.2), transparent),
-    radial-gradient(2px 2px at 60% 70%, rgba(139, 92, 246, 0.2), transparent),
-    radial-gradient(1px 1px at 50% 50%, rgba(236, 72, 153, 0.2), transparent),
-    radial-gradient(1px 1px at 80% 20%, rgba(99, 102, 241, 0.2), transparent),
-    radial-gradient(2px 2px at 10% 80%, rgba(139, 92, 246, 0.2), transparent);
+    radial-gradient(2px 2px at 20% 30%, rgba(99, 102, 241, 0.15), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(139, 92, 246, 0.15), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(236, 72, 153, 0.12), transparent);
+  background-size: 420px 420px, 360px 360px, 280px 280px;
 }
 
 /* === Section Container === */
@@ -479,6 +517,12 @@ a:hover {
 
 ul li {
   list-style: none;
+}
+
+#hero,
+#projects,
+#contact {
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
 }
 
 html {
@@ -655,8 +699,13 @@ p {
 }
 
 @media (max-width: 768px) {
+  .app::before,
+  .app::after {
+    animation: none;
+  }
+
   :root {
-    --container-padding: 1.5rem;
+    --container-padding: 1.25rem;
     --section-gap: 3rem;
   }
   
@@ -672,6 +721,17 @@ p {
     bottom: var(--space-6);
     right: var(--space-6);
     font-size: var(--text-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding-bottom: calc(3.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .scroll2Top {
+    bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+    right: var(--space-4);
   }
 }
 
@@ -699,6 +759,11 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .section-fallback {
+    animation: none;
+    background: var(--glass-bg);
   }
 }
 
