@@ -1,88 +1,54 @@
-/* Sticky premium header — design tokens from index.css */
+/* Minimal floating theme control */
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: var(--space-3) var(--container-padding);
-  background: color-mix(in srgb, var(--primary) 10%, transparent);
-  border-bottom: 1px solid var(--border-secondary);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  position: fixed;
+  top: clamp(0.75rem, 2.5vw, 1.25rem);
+  right: clamp(0.75rem, 2.8vw, 1.6rem);
+  z-index: 1100;
+  pointer-events: none;
 }
 
 .site-header-inner {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  min-height: var(--header-height);
-}
-
-.site-logo {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: var(--text-lg);
-  letter-spacing: -0.04em;
-  color: var(--title-primary);
-  text-decoration: none;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-lg);
-  border: 1px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-.site-logo:hover {
-  color: var(--accent-primary);
-  background: var(--glass-bg);
-  border-color: var(--border-primary);
-}
-
-.site-nav ul {
-  display: flex;
-  align-items: center;
-  gap: clamp(var(--space-2), 2vw, var(--space-6));
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.site-nav a {
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--subtitle);
-  text-decoration: none;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-full);
-  transition: color 0.2s ease, background 0.2s ease;
-}
-
-.site-nav a:hover {
-  color: var(--title-primary);
-  background: var(--glass-bg);
+  pointer-events: auto;
 }
 
 .theme-toggle {
   flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--radius-full);
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--glass-bg);
+  background: color-mix(in srgb, var(--primary) 60%, transparent);
   color: var(--subtitle);
-  border: 1px solid var(--border-primary);
+  border: 1px solid color-mix(in srgb, var(--border-primary) 85%, transparent);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
 }
 
 .theme-toggle:hover {
   color: var(--title-primary);
   border-color: var(--border-elevated);
-  box-shadow: var(--shadow-md);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.3),
+    0 0 20px color-mix(in srgb, var(--accent-primary) 32%, transparent);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-toggle span {
+  font-size: 1.1rem;
 }
 
 .theme-toggle .icon-sun {
@@ -91,41 +57,12 @@
 
 @media (max-width: 640px) {
   .site-header {
-    padding: var(--space-2) var(--space-4);
+    top: calc(0.65rem + env(safe-area-inset-top, 0px));
+    right: 0.8rem;
   }
 
-  .site-nav {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
-    padding: var(--space-2) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom, 0));
-    background: color-mix(in srgb, var(--primary) 92%, transparent);
-    border-top: 1px solid var(--border-primary);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  .site-nav ul {
-    justify-content: space-between;
-    gap: 0;
-  }
-
-  .site-nav a {
-    font-size: var(--text-xs);
-    padding: var(--space-2) var(--space-2);
-  }
-
-  .site-header-inner {
-    justify-content: space-between;
-    min-height: auto;
-  }
-}
-
-/* color-mix fallback for older engines */
-@supports not (background: color-mix(in srgb, white 50%, black)) {
-  .site-header {
-    background: var(--surface);
+  .theme-toggle {
+    width: 2.7rem;
+    height: 2.7rem;
   }
 }
