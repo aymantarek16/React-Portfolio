@@ -619,6 +619,9 @@
     font-size: clamp(2rem, 7.5vw, 2.75rem);
   }
 
+  .hero-stat {
+    padding: 13px 10px !important;
+  }
   .cta-primary,
   .cta-secondary {
     width: 100%;
