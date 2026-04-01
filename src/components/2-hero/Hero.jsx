@@ -13,10 +13,13 @@ const Hero = () => {
     offset: ["start start", "end start"]
   });
   
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+  const y = useTransform(scrollYProgress, [0.2, 1], [0, 200]);
   
+  const opacity = useTransform(scrollYProgress, [0.50, 0.6], [1, 0]);
+  
+  const scale = useTransform(scrollYProgress, [0.25, 0.6], [1, 0.8]);
+  
+  // smoothing
   const smoothY = useSpring(y, { stiffness: 100, damping: 20 });
   const smoothOpacity = useSpring(opacity, { stiffness: 100, damping: 20 });
 

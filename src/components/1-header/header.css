@@ -5,7 +5,7 @@
   top: 0;
   z-index: 1000;
   padding: var(--space-3) var(--container-padding);
-  background: color-mix(in srgb, var(--primary) 78%, transparent);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
   border-bottom: 1px solid var(--border-secondary);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
