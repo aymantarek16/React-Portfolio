@@ -22,13 +22,20 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/.*/i,
-            handler: 'NetworkFirst',
+            urlPattern: ({ url }) => {
+              const isSameOrigin = url.origin === self.location.origin;
+              const isStaticAsset = /\.(js|css|png|jpg|jpeg|svg|gif|woff|woff2|json)$/i.test(url.pathname);
+              return isSameOrigin && isStaticAsset;
+            },
+            handler: 'CacheFirst',
             options: {
-              cacheName: 'offlineCache',
+              cacheName: 'static-assets',
               expiration: {
                 maxEntries: 200,
-                maxAgeSeconds: 24 * 60 * 60 // 24 hours
+                maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
               }
             }
           }

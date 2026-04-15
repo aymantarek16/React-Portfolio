@@ -119,7 +119,7 @@ const ProjectCard = ({ project, index }) => {
   );
 };
 
-const Main = () => {
+const Works = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -153,4 +153,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Works;
