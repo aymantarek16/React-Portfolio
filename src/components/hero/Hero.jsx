@@ -86,8 +86,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
-            I help brands and businesses turn ideas into fast, modern,
-            high-converting web products.
+          I build fast, scalable web apps with React & Next.js.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -119,7 +118,7 @@ const Hero = () => {
               <span>View My Work</span>
             </a>
             <a
-              href="/Ayman-Tarek-CV.pdf"
+              href="/Front End Developer Ayman Tarek.pdf"
               download
               className="cta-cv"
               aria-label="Download CV"
