@@ -277,6 +277,7 @@
   .card-image-wrapper {
     aspect-ratio: 16/9;
     margin: 1rem;
+    overflow: visible;
   }
   
   .card-info,
@@ -285,10 +286,24 @@
   }
   
   .card-actions {
-    opacity: 1;
-    transform: none;
-    position: relative;
-    margin-top: 1rem;
+    position: absolute !important;
+    bottom: -45px !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    opacity: 1 !important;
+    transform: none !important;
+    display: flex !important;
+    margin-top: 0 !important;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-subtitle{
+    margin-top: 20px;
+  }
+  .card-image-wrapper {
+    margin-bottom: 60px;
   }
 }
 
@@ -304,6 +319,13 @@
   .card-image-wrapper {
     margin: 0.75rem;
     border-radius: 12px;
+    margin-bottom: 60px;
+  }
+  
+  .card-actions {
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    bottom: -50px !important;
   }
   
   .card-info,

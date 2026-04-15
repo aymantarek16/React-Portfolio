@@ -1,15 +1,15 @@
 import { useEffect, useState, useCallback, useRef, lazy, Suspense } from "react";
-import Hero from "./components/2-hero/Hero";
-import Header from "./components/1-header/Header";
+import Hero from "./components/hero/Hero";
+import Header from "./components/header/Header";
 import CustomCursor from "./components/CustomCursor";
 import Stats from "./components/Stats";
 import Services from "./components/Services";
 import WhyMe from "./components/WhyMe";
 import FinalCTA from "./components/FinalCTA";
 
-const Main = lazy(() => import("./components/3-main/Main"));
-const Contact = lazy(() => import("./components/4-contact/Contact"));
-const Footer = lazy(() => import("./components/5-footer/Footer"));
+const Works = lazy(() => import("./components/works/Works"));
+const Contact = lazy(() => import("./components/contact/Contact"));
+const Footer = lazy(() => import("./components/footer/Footer"));
 
 function SectionFallback() {
   return (
@@ -89,7 +89,7 @@ function App() {
       
       {/* 3. Projects - Real Work Showcase */}
       <Suspense fallback={<SectionFallback />}>
-        <Main />
+        <Works />
       </Suspense>
       
       {/* 4. Services - Value Proposition */}

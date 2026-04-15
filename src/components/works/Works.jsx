@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useRef, useState } from "react";
-import "./main.css";
+import "./works.css";
 import { motion, useInView } from "framer-motion";
-import { featuredProjects } from "./Projects";
+import { featuredProjects } from "./ProjectsData";
 
 
 
