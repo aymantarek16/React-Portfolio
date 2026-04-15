@@ -1,6 +1,11 @@
 import { useEffect, useState, useCallback, useRef, lazy, Suspense } from "react";
 import Hero from "./components/2-hero/Hero";
 import Header from "./components/1-header/Header";
+import CustomCursor from "./components/CustomCursor";
+import Stats from "./components/Stats";
+import Services from "./components/Services";
+import WhyMe from "./components/WhyMe";
+import FinalCTA from "./components/FinalCTA";
 
 const Main = lazy(() => import("./components/3-main/Main"));
 const Contact = lazy(() => import("./components/4-contact/Contact"));
@@ -14,7 +19,6 @@ function SectionFallback() {
       aria-label="Loading section"
     />
   );
-
 }
 
 function App() {
@@ -71,21 +75,43 @@ function App() {
 
   return (
     <div className="app">
+      {/* Custom Cursor - Desktop Only */}
+      <CustomCursor />
+      
+      {/* Fixed Header */}
       <Header />
+      
+      {/* 1. Hero - Strong Positioning */}
       <Hero />
-      <div className="divider" />
+      
+      {/* 2. Stats - Proof/Trust Signals */}
+      <Stats />
+      
+      {/* 3. Projects - Real Work Showcase */}
       <Suspense fallback={<SectionFallback />}>
         <Main />
       </Suspense>
-      <div className="divider" />
+      
+      {/* 4. Services - Value Proposition */}
+      <Services />
+      
+      {/* 5. Why Me - Differentiation */}
+      <WhyMe />
+      
+      {/* 6. Final CTA - Strong Closing */}
+      <FinalCTA />
+      
+      {/* 7. Contact - Minimal */}
       <Suspense fallback={<SectionFallback />}>
         <Contact />
       </Suspense>
-      <div className="divider" />
+      
+      {/* 8. Footer */}
       <Suspense fallback={<SectionFallback />}>
         <Footer />
       </Suspense>
 
+      {/* Scroll to Top */}
       {showScrollBtn && (
         <button
           type="button"

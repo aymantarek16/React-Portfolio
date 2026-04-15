@@ -1,0 +1,124 @@
+.whyme-section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.whyme-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Header */
+.whyme-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0;
+  color: var(--title-primary);
+}
+
+/* Grid */
+.whyme-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Reason Card */
+.reason-card {
+  position: relative;
+  background: rgba(17, 17, 27, 0.6);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.reason-card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-4px);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+/* Icon */
+.reason-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
+  border-radius: 16px;
+  margin: 0 auto 1.5rem;
+}
+
+.reason-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--accent-primary);
+}
+
+/* Content */
+.reason-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: var(--title-primary);
+}
+
+.reason-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--subtitle);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .whyme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .whyme-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .reason-card {
+    padding: 1.5rem;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .reason-icon {
+    margin: 0;
+    flex-shrink: 0;
+  }
+  
+  .reason-title {
+    margin-bottom: 0.5rem;
+  }
+}

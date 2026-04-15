@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ========================
    * Premium Color System
@@ -19,11 +20,16 @@
   --text-muted: #6b7280;
   --text-disabled: #4b5563;
   
-  /* === Accent Colors === */
+  /* === Accent Colors - Neon AI Theme === */
   --accent-primary: #6366f1;
   --accent-secondary: #8b5cf6;
   --accent-tertiary: #ec4899;
   --accent-quaternary: #14b8a6;
+  --neon-blue: #00d4ff;
+  --neon-purple: #b347d9;
+  --neon-pink: #ff3d8a;
+  --neon-cyan: #00f5ff;
+  --neon-glow: 0 0 30px rgba(99, 102, 241, 0.5), 0 0 60px rgba(99, 102, 241, 0.3);
   
   /* === Semantic Colors === */
   --success: #10b981;
@@ -37,10 +43,11 @@
   --border-elevated: rgba(99, 102, 241, 0.2);
   --border-focus: rgba(99, 102, 241, 0.5);
   
-  /* === Glass & Blur Effects - Optimized === */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-blur: blur(8px); /* Reduced from 12px */
+  /* === Glass & Blur Effects - Futuristic === */
+  --glass-bg: rgba(17, 17, 27, 0.6);
+  --glass-border: rgba(99, 102, 241, 0.2);
+  --glass-blur: blur(12px);
+  --glass-glow: 0 0 20px rgba(99, 102, 241, 0.15);
   
   /* === Premium Gradients === */
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
@@ -61,6 +68,7 @@
   /* === Typography === */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   
   /* === Font Sizes === */
   --text-xs: 0.75rem;
