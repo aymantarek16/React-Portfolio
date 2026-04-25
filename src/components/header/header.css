@@ -1,68 +1,255 @@
-/* Minimal floating theme control */
-
 .site-header {
   position: fixed;
-  top: clamp(0.75rem, 2.5vw, 1.25rem);
-  right: clamp(0.75rem, 2.8vw, 1.6rem);
+  inset: 1rem var(--container-padding) auto;
   z-index: 1100;
+  display: flex;
+  justify-content: center;
   pointer-events: none;
 }
 
 .site-header-inner {
   pointer-events: auto;
+  width: min(100%, 980px);
+  min-height: var(--header-height);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--bgHeader);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
 }
 
-.theme-toggle {
-  flex-shrink: 0;
-  width: 2.85rem;
-  height: 2.85rem;
-  border-radius: 999px;
-  display: flex;
+.header-brand {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  background: color-mix(in srgb, var(--primary) 60%, transparent);
-  color: var(--subtitle);
-  border: 1px solid color-mix(in srgb, var(--border-primary) 85%, transparent);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.25rem 0.8rem 0.25rem 0.3rem;
+}
+
+.brand-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  border-radius: var(--radius-full);
+  color: var(--title-primary);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035));
+  border: 1px solid rgba(173, 190, 255, 0.22);
+  box-shadow:
+    0 0 26px rgba(93, 242, 214, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  overflow: hidden;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  cursor: pointer;
-  transition:
-    color 0.22s ease,
-    border-color 0.22s ease,
-    box-shadow 0.22s ease,
-    transform 0.22s ease;
 }
 
-.theme-toggle:hover {
+.brand-mark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 30% 20%, rgba(93, 242, 214, 0.28), transparent 36%);
+  pointer-events: none;
+}
+
+.brand-mark svg {
+  position: relative;
+  z-index: 1;
+  width: 1.42rem;
+  height: 1.42rem;
+  overflow: visible;
+}
+
+.brand-mark-a,
+.brand-mark-bar,
+.brand-mark-slash {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.6;
+}
+
+.brand-mark-a,
+.brand-mark-bar {
+  stroke: url("#brandGradient");
+}
+
+.brand-mark-slash {
+  stroke: #a78bfa;
+  opacity: 0.86;
+}
+
+.brand-mark-dot {
+  fill: #ffb86b;
+  filter: drop-shadow(0 0 5px rgba(255, 184, 107, 0.8));
+}
+
+.brand-copy {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.brand-copy strong {
   color: var(--title-primary);
-  border-color: var(--border-elevated);
-  box-shadow:
-    0 16px 36px rgba(0, 0, 0, 0.3),
-    0 0 20px color-mix(in srgb, var(--accent-primary) 32%, transparent);
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.brand-copy small {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  line-height: 1;
+}
+
+.header-nav {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border-secondary);
+}
+
+.header-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.35rem;
+  padding: 0 0.95rem;
+  border-radius: var(--radius-full);
+  color: var(--subtitle);
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: var(--title-primary);
+  background: var(--surface-elevated);
   transform: translateY(-1px);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.header-cta,
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  min-height: 2.65rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-primary);
+  background: var(--surface);
+  color: var(--title-primary);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.theme-toggle span {
-  font-size: 1.1rem;
+.header-cta {
+  padding: 0 1.05rem;
+  color: #06100e;
+  background: var(--gradient-accent);
+  font-size: 0.88rem;
+  font-weight: 800;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.theme-toggle {
+  width: 2.65rem;
+  font-size: 1rem;
+}
+
+.header-cta:hover,
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-elevated);
+  box-shadow: var(--shadow-glow), var(--shadow-sm);
 }
 
 .theme-toggle .icon-sun {
-  color: #f59e0b;
+  color: #f3a100;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 820px) {
   .site-header {
-    top: calc(0.65rem + env(safe-area-inset-top, 0px));
-    right: 0.8rem;
+    inset: auto 0.7rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .site-header-inner {
+    width: 100%;
+    grid-template-columns: auto 1fr auto;
+    min-height: 3.35rem;
+    border-radius: 24px;
+    gap: 0.45rem;
+    padding: 0.42rem;
+  }
+
+  .brand-copy,
+  .header-cta {
+    display: none;
+  }
+
+  .brand-mark {
+    width: 2.45rem;
+    height: 2.45rem;
+    flex: 0 0 auto;
+  }
+
+  .header-nav {
+    justify-self: stretch;
+    justify-content: center;
+    gap: 0.1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    min-width: 0;
+    padding: 0.22rem;
+  }
+
+  .header-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-nav a {
+    flex: 1 1 0;
+    justify-content: center;
+    min-width: 0;
+    min-height: 2.2rem;
+    padding: 0 0.34rem;
+    font-size: clamp(0.68rem, 2.6vw, 0.78rem);
   }
 
   .theme-toggle {
-    width: 2.7rem;
-    height: 2.7rem;
+    width: 2.45rem;
+    min-height: 2.45rem;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-header {
+    inset-inline: 0.45rem;
+  }
+
+  .site-header-inner {
+    gap: 0.3rem;
+    padding: 0.34rem;
+  }
+
+  .brand-mark,
+  .theme-toggle {
+    width: 2.25rem;
+    height: 2.25rem;
+    min-height: 2.25rem;
+  }
+
+  .header-nav a {
+    font-size: 0.66rem;
+    padding: 0 0.22rem;
   }
 }

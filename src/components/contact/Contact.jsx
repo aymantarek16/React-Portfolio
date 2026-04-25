@@ -1,7 +1,7 @@
-import "./contact.css";
+import { useRef } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import "./contact.css";
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("xqkrnjjv");
@@ -20,7 +20,7 @@ const Contact = () => {
         >
           <span className="section-label">Get In Touch</span>
           <h2 className="section-title">
-            Let&apos;s build <span className="text-gradient">together</span>
+            Tell me what we&apos;re building next.
           </h2>
         </motion.div>
 
@@ -77,7 +77,7 @@ const Contact = () => {
               type="submit"
               disabled={state.submitting}
               className="submit-btn"
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
               {state.submitting ? (
@@ -98,7 +98,9 @@ const Contact = () => {
                 transition={{ duration: 0.5 }}
                 role="status"
               >
-                <span className="success-icon">✓</span>
+                <span className="success-icon" aria-hidden>
+                  OK
+                </span>
                 <p>Message sent! I&apos;ll reply within 24 hours.</p>
               </motion.div>
             )}
