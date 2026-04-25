@@ -1127,3 +1127,145 @@
     width: min(100%, 230px);
   }
 }
+
+/* Mobile visual fit: keep the portrait compact, polished, and clear of content. */
+@media (max-width: 640px) {
+  .hero-container {
+    gap: 0.78rem;
+  }
+
+  .hero-visual {
+    width: clamp(156px, 43vw, 188px);
+    transform-origin: center top;
+    animation: mobileVisualRise 5.8s ease-in-out infinite;
+  }
+
+  .visual-panel {
+    padding: 0.36rem;
+    border-radius: 17px;
+    box-shadow:
+      0 16px 42px rgba(0, 0, 0, 0.34),
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 0 26px rgba(93, 242, 214, 0.14);
+  }
+
+  .visual-panel::before {
+    opacity: 0.42;
+    animation: frameOrbit 8s linear infinite;
+  }
+
+  .visual-panel::after {
+    border-radius: 16px;
+    opacity: 0.62;
+    animation: mobilePanelScan 4.6s ease-in-out infinite;
+  }
+
+  .visual-topbar {
+    gap: 0.25rem;
+    padding: 0.08rem 0.08rem 0.3rem;
+  }
+
+  .visual-topbar span {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+
+  .portrait-frame {
+    border-radius: 13px;
+    aspect-ratio: 0.82;
+  }
+
+  .portrait-frame::before {
+    inset: 0.55rem;
+    border-radius: 10px;
+  }
+
+  .portrait-frame::after {
+    animation: mobilePortraitSignal 4.8s ease-in-out infinite;
+  }
+
+  .hero-image {
+    transform: scale(1.01);
+    animation: mobilePortraitFocus 6.2s ease-in-out infinite;
+  }
+
+  .hero-metrics {
+    gap: 0.25rem;
+    margin-top: 0.3rem;
+  }
+
+  .hero-metrics div {
+    padding: 0.36rem 0.2rem;
+    border-radius: 10px;
+  }
+
+  .hero-metrics strong {
+    font-size: 0.78rem;
+  }
+
+  .hero-metrics span {
+    font-size: 0.4rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-visual {
+    width: clamp(148px, 46vw, 176px);
+  }
+}
+
+@keyframes mobileVisualRise {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(93, 242, 214, 0));
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    filter: drop-shadow(0 10px 22px rgba(93, 242, 214, 0.12));
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes mobilePanelScan {
+  0%,
+  100% {
+    background-position: 170% 0, 0 0, 0 0;
+    opacity: 0.46;
+  }
+  52% {
+    background-position: -75% 0, 0 0, 0 0;
+    opacity: 0.74;
+  }
+}
+
+@keyframes mobilePortraitSignal {
+  0%,
+  100% {
+    background-position: 0 0, 190% 0;
+    opacity: 0.72;
+  }
+  50% {
+    background-position: 0 0, -80% 0;
+    opacity: 0.9;
+  }
+}
+
+@keyframes mobilePortraitFocus {
+  0%,
+  100% {
+    transform: scale(1.01);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual,
+  .visual-panel::before,
+  .visual-panel::after,
+  .portrait-frame::after,
+  .hero-image {
+    animation: none;
+  }
+}
