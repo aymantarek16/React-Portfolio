@@ -54,7 +54,7 @@ const Hero = () => {
 
           <div className="hero-cta" aria-label="Primary actions">
             <a href="#projects" className="cta-primary-large">
-              View selected work
+              View Projects
               <span className="cta-arrow" aria-hidden="true">↗</span>
             </a>
 
