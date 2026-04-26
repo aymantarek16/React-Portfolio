@@ -3,31 +3,19 @@ import SocialIcon from "../SocialIcon";
 import "./hero.css";
 
 const socials = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/ayman-tarek-617b21229",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/aymantarek16",
-  },
-  {
-    label: "Facebook",
-    href: "https://web.facebook.com/aymaantarek",
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/ayman_tarek74",
-  },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ayman-tarek-617b21229" },
+  { label: "GitHub", href: "https://github.com/aymantarek16" },
+  { label: "Facebook", href: "https://web.facebook.com/aymaantarek" },
+  { label: "Instagram", href: "https://www.instagram.com/ayman_tarek74" },
 ];
 
 const metrics = [
-  { value: "20+", label: "Projects" },
-  { value: "3+", label: "Years" },
-  { value: "90+", label: "Lighthouse" },
+  { value: "20+", label: "Completed Projects" },
+  { value: "4+", label: "Years" },
+  { value: "90+", label: "Performance" },
 ];
 
-const stack = ["React", "Next.js", "TypeScript", "Framer Motion", "PWA"];
+const stack = ["React", "Next.js", "TypeScript", "Supabase", "Firebase"];
 
 const Hero = () => {
   return (
@@ -54,25 +42,26 @@ const Hero = () => {
           </div>
 
           <h1 className="hero-headline">
-            Interfaces that feel like
-            <span className="text-gradient"> tomorrow shipped today.</span>
+            build web apps that look premium
+            <span className="text-gradient"> and drive real business growth.</span>
           </h1>
 
           <p className="hero-subheadline">
-            I design and build fast React and Next.js experiences with sharp
-            visuals, clean architecture, and business-focused interactions.
+            Design and develop fast React and Next.js products for brands, clinics,
+            restaurants, gyms, and startups — with clean architecture, sharp UI,
+            booking flows, dashboards, and conversion-focused experiences.
           </p>
 
           <div className="hero-cta" aria-label="Primary actions">
             <a href="#projects" className="cta-primary-large">
               View selected work
-              <span className="cta-arrow" aria-hidden>
-                ↗
-              </span>
+              <span className="cta-arrow" aria-hidden="true">↗</span>
             </a>
+
             <a href="#contact" className="cta-secondary-large">
               Start a project
             </a>
+
             <a
               href="/Front End Developer Ayman Tarek.pdf"
               download
@@ -133,6 +122,7 @@ const Hero = () => {
                 className="hero-image"
                 loading="eager"
                 decoding="async"
+                fetchPriority="high"
               />
             </div>
 
@@ -145,7 +135,6 @@ const Hero = () => {
               ))}
             </div>
           </div>
-
         </motion.div>
       </div>
     </section>
