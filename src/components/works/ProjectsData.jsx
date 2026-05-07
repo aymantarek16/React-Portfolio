@@ -70,16 +70,6 @@ export const featuredProjects = [
     category: "Agency",
   },
   {
-    id: "web-marketing",
-    projectTitle: "Procoor Marketing",
-    subTitle: "Professional marketing website for Procoor Company to display services with modern design and smooth interactions.",
-    imgPath: "./Projects images/web_site_markiting.png",
-    liveDemo: "https://website-marketing-iota.vercel.app/",
-    github: "https://github.com/aymantarek16/website_marketing",
-    techStack: ["HTML", "CSS", "JavaScript"],
-    category: "Marketing",
-  },
-  {
     id: "225-f",
     projectTitle: "225-F Smokehouse",
     subTitle: "Restaurant website to savor the flavor and elevate meals. Explore the art of smoked delights with beautiful imagery.",
@@ -88,5 +78,15 @@ export const featuredProjects = [
     github: "https://github.com/aymantarek16/225-F",
     techStack: ["HTML", "CSS", "JavaScript", "Animations"],
     category: "Restaurant",
+  },
+  {
+    id: "web-marketing",
+    projectTitle: "Procoor Marketing",
+    subTitle: "Professional marketing website for Procoor Company to display services with modern design and smooth interactions.",
+    imgPath: "./Projects images/web_site_markiting.png",
+    liveDemo: "https://website-marketing-iota.vercel.app/",
+    github: "https://github.com/aymantarek16/website_marketing",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    category: "Marketing",
   },
 ];
