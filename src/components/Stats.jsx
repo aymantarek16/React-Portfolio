@@ -9,7 +9,7 @@ const stats = [
     description: "Production-ready applications",
   },
   {
-    value: "3+",
+    value: "4+",
     label: "Years Experience",
     description: "Modern web development",
   },
