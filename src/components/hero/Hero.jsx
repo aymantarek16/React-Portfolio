@@ -122,7 +122,6 @@ const Hero = () => {
                 className="hero-image"
                 loading="eager"
                 decoding="async"
-                fetchPriority="high"
               />
             </div>
 
