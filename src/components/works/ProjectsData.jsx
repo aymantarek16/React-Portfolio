@@ -11,6 +11,17 @@ export const featuredProjects = [
     category: "Healthcare",
   },
   {
+    id: "branded-invoice",
+    projectTitle: "Branded Invoice",
+    subTitle:
+      "Premium multi-account invoice management system for freelancers, agencies, shops, clinics, gyms, restaurants, and small businesses. Includes branded invoices, client and product management, dashboard analytics, multiple invoice themes, PDF/PNG export, print support, and secure user-based data management.",
+    imgPath: "./Projects images/Invoice_Portfolio.png",
+    liveDemo: "https://branded-invoice.vercel.app/",
+    github: "https://github.com/aymantarek16/Branded-Invoice",
+    techStack: ["Next.js", "JavaScript", "Tailwind CSS", "Supabase"],
+    category: "Business Tools",
+  },
+  {
     id: "pulse-space-social-platform",
     projectTitle: "PulseSpace Social Platform",
     subTitle:
@@ -30,7 +41,7 @@ export const featuredProjects = [
   {
     id: "royal-barbers-booking-system",
     projectTitle: "Royal Barbers Booking System",
-    subTitle:"A full-stack barber shop booking system with Supabase, online reservations, WhatsApp integration, customer management, appointment status tracking, admin dashboard, and business reports — built as a complete production-ready management solution, not just a landing page.",
+    subTitle: "A full-stack barber shop booking system with Supabase, online reservations, WhatsApp integration, customer management, appointment status tracking, admin dashboard, and business reports — built as a complete production-ready management solution, not just a landing page.",
     imgPath: "./Projects images/babershop.png",
     liveDemo: "https://fullstack-baber-shop.vercel.app/",
     github: "https://github.com/aymantarek16/fullstack-baber-shop",
