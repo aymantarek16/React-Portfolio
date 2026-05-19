@@ -11,6 +11,17 @@ export const featuredProjects = [
     category: "Healthcare",
   },
   {
+    id: "flexops-erp",
+    projectTitle: "FlexOps ERP",
+    subTitle:
+      "A customizable Arabic ERP dashboard for managing customers, orders, invoices, expenses, reports, and business workflows. Designed as a SaaS-style business management system that can be adapted for clinics, gyms, restaurants, retail stores, and service companies.",
+    imgPath: "./Projects images/FlexOps ERP.png",
+    liveDemo: "https://flex-ops-erp.vercel.app/",
+    github: "https://github.com/aymantarek16/FlexOps-ERP",
+    techStack: ["React.js", "TypeScript", "Tailwind CSS", "Zustand"],
+    category: "ERP System",
+  },
+  {
     id: "branded-invoice",
     projectTitle: "Branded Invoice",
     subTitle:
@@ -21,6 +32,17 @@ export const featuredProjects = [
     techStack: ["Next.js", "JavaScript", "Tailwind CSS", "Supabase"],
     category: "Business Tools",
   },
+  {
+    id: "royal-barbers-booking-system",
+    projectTitle: "Royal Barbers Booking System",
+    subTitle: "A full-stack barber shop booking system with Supabase, online reservations, WhatsApp integration, customer management, appointment status tracking, admin dashboard, and business reports — built as a complete production-ready management solution, not just a landing page.",
+    imgPath: "./Projects images/babershop.png",
+    liveDemo: "https://fullstack-baber-shop.vercel.app/",
+    github: "https://github.com/aymantarek16/fullstack-baber-shop",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    category: "Booking System",
+  },
+  
   {
     id: "pulse-space-social-platform",
     projectTitle: "PulseSpace Social Platform",
@@ -37,16 +59,6 @@ export const featuredProjects = [
       "Firestore",
     ],
     category: "Social Platform",
-  },
-  {
-    id: "royal-barbers-booking-system",
-    projectTitle: "Royal Barbers Booking System",
-    subTitle: "A full-stack barber shop booking system with Supabase, online reservations, WhatsApp integration, customer management, appointment status tracking, admin dashboard, and business reports — built as a complete production-ready management solution, not just a landing page.",
-    imgPath: "./Projects images/babershop.png",
-    liveDemo: "https://fullstack-baber-shop.vercel.app/",
-    github: "https://github.com/aymantarek16/fullstack-baber-shop",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
-    category: "Booking System",
   },
   {
     id: "flavre-ecommerce",
