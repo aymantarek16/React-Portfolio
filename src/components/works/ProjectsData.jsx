@@ -7,7 +7,7 @@ export const featuredProjects = [
     imgPath: "./Projects images/careflow.png",
     liveDemo: "https://care-flow-operations-system.vercel.app/login",
     github: "https://github.com/aymantarek16/CareFlow-Operations-System",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    techStack: ["React.js", "TypeScript", "Tailwind CSS", "Supabase"],
     category: "Healthcare",
   },
   {
