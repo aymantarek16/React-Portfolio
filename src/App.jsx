@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback, useRef, lazy, Suspense } from "react";
 import Hero from "./components/hero/Hero";
 import Header from "./components/header/Header";
-import CustomCursor from "./components/CustomCursor";
 import Stats from "./components/Stats";
 import Services from "./components/Services";
 import WhyMe from "./components/WhyMe";
@@ -75,9 +74,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* Custom Cursor - Desktop Only */}
-      <CustomCursor />
-      
       {/* Fixed Header */}
       <Header />
       
