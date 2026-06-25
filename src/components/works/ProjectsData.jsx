@@ -33,6 +33,17 @@ export const featuredProjects = [
     category: "Business Tools",
   },
   {
+    id: "car-care",
+    projectTitle: "Car Care",
+    subTitle:
+      "Modern workshop and car service management system built for automotive service centers. Features customer management, service tracking, vehicle records, barcode generation and printing, dashboard analytics, workshop workflow management, secure authentication, and responsive dark-themed UI for seamless operations.",
+    imgPath: "./Projects images/carcare.png",
+    liveDemo: "https://car-care-pi.vercel.app/login",
+    github: "https://github.com/aymantarek16/car-care",
+    techStack: ["Next.js", "JavaScript", "Tailwind CSS", "Firebase"],
+    category: "Management System",
+  },
+  {
     id: "royal-barbers-booking-system",
     projectTitle: "Royal Barbers Booking System",
     subTitle: "A full-stack barber shop booking system with Supabase, online reservations, WhatsApp integration, customer management, appointment status tracking, admin dashboard, and business reports — built as a complete production-ready management solution, not just a landing page.",
@@ -42,7 +53,7 @@ export const featuredProjects = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
     category: "Booking System",
   },
-  
+
   {
     id: "pulse-space-social-platform",
     projectTitle: "PulseSpace Social Platform",
