@@ -1,10 +1,6 @@
 import { useEffect, useState, useCallback, useRef, lazy, Suspense } from "react";
 import Hero from "./components/hero/Hero";
 import Header from "./components/header/Header";
-import Stats from "./components/Stats";
-import Services from "./components/Services";
-import WhyMe from "./components/WhyMe";
-import FinalCTA from "./components/FinalCTA";
 
 const Works = lazy(() => import("./components/works/Works"));
 const Contact = lazy(() => import("./components/contact/Contact"));
@@ -80,29 +76,19 @@ function App() {
       {/* 1. Hero - Strong Positioning */}
       <Hero />
       
-      {/* 2. Stats - Proof/Trust Signals */}
-      <Stats />
       
       {/* 3. Projects - Real Work Showcase */}
       <Suspense fallback={<SectionFallback />}>
         <Works />
       </Suspense>
       
-      {/* 4. Services - Value Proposition */}
-      <Services />
-      
-      {/* 5. Why Me - Differentiation */}
-      <WhyMe />
-      
-      {/* 6. Final CTA - Strong Closing */}
-      <FinalCTA />
-      
-      {/* 7. Contact - Minimal */}
+    
+      {/* 6. Contact - CTA + Form */}
       <Suspense fallback={<SectionFallback />}>
         <Contact />
       </Suspense>
       
-      {/* 8. Footer */}
+      {/* 7. Footer */}
       <Suspense fallback={<SectionFallback />}>
         <Footer />
       </Suspense>
