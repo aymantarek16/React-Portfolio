@@ -11,6 +11,17 @@ export const featuredProjects = [
     category: "Healthcare",
   },
   {
+  id: "hireflow-crm",
+  projectTitle: "HireFlow CRM",
+  subTitle:
+    "A modern recruitment CRM and applicant tracking system (ATS) that streamlines the hiring process with candidate management, job postings, hiring pipeline, role-based dashboards, authentication, and a responsive, user-friendly interface.",
+  imgPath: "./Projects images/HireFlow_CRM.png",
+  liveDemo: "https://hire-flow-crm.vercel.app/",
+  github: "https://github.com/aymantarek16/HireFlow-CRM",
+  techStack: ["React.js", "Tailwind CSS", "Supabase"],
+  category: "CRM",
+},
+  {
     id: "flexops-erp",
     projectTitle: "FlexOps ERP",
     subTitle:
@@ -19,7 +30,7 @@ export const featuredProjects = [
     liveDemo: "https://flex-ops-erp.vercel.app/",
     github: "https://github.com/aymantarek16/FlexOps-ERP",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "Zustand"],
-    category: "ERP System",
+    category: "ERP",
   },
   {
     id: "branded-invoice",
@@ -111,7 +122,7 @@ export const featuredProjects = [
     liveDemo: "https://225-f.vercel.app/",
     github: "https://github.com/aymantarek16/225-F",
     techStack: ["HTML", "CSS", "JavaScript", "Animations"],
-    category: "Restaurant",
+    category: "Restaurant / E-commerce",
   },
   {
     id: "web-marketing",
