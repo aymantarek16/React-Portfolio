@@ -83,10 +83,7 @@ const SpotlightProject = ({ project, totalProjects }) => (
       aria-label={`Open live demo for ${project.projectTitle}`}
     >
       <img src={project.imgPath} alt={project.projectTitle} loading="eager" />
-      <div className="screen-hud" aria-hidden>
-        <span>Live Case</span>
-        <span>{String(totalProjects).padStart(2, "0")} builds</span>
-      </div>
+  
     </a>
 
     <div className="spotlight-info">
@@ -153,13 +150,9 @@ const Works = () => {
           <div>
             <span className="section-label">Selected Work</span>
             <h2 className="section-title">
-              Production interfaces built like real business systems.
+      Production-ready systems, built for real business growth
             </h2>
           </div>
-          <p className="section-subtitle">
-            A sharper, faster portfolio view: scan the category, inspect the
-            product, then jump straight into the live build or source code.
-          </p>
         </motion.div>
 
         <div className="works-command">
