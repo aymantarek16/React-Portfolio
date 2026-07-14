@@ -9,6 +9,10 @@ export const featuredProjects = [
     github: "https://github.com/aymantarek16/CareFlow-Operations-System",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "Supabase"],
     category: "Healthcare",
+    loginCredentials: {
+      email: "admin@careflow.com",
+      password: "12345678",
+    },
   },
   {
   id: "hireflow-crm",
@@ -20,6 +24,10 @@ export const featuredProjects = [
   github: "https://github.com/aymantarek16/HireFlow-CRM",
   techStack: ["React.js", "Tailwind CSS", "Supabase"],
   category: "CRM",
+  loginCredentials: {
+    email: "admin@career-booster.com",
+    password: "admin123123",
+  },
 },
   {
     id: "flexops-erp",
@@ -31,6 +39,10 @@ export const featuredProjects = [
     github: "https://github.com/aymantarek16/FlexOps-ERP",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "Zustand"],
     category: "ERP",
+    loginCredentials: {
+      email: "demo@flexops.com",
+      password: "123456",
+    },
   },
   {
     id: "branded-invoice",
@@ -42,6 +54,10 @@ export const featuredProjects = [
     github: "https://github.com/aymantarek16/Branded-Invoice",
     techStack: ["Next.js", "JavaScript", "Tailwind CSS", "Supabase"],
     category: "Business Tools",
+    loginCredentials: {
+      email: "demo@brandedinvoice.com",
+      password: "demo123456",
+    },
   },
   {
     id: "car-care",
@@ -53,6 +69,10 @@ export const featuredProjects = [
     github: "https://github.com/aymantarek16/car-care",
     techStack: ["Next.js", "JavaScript", "Tailwind CSS", "Firebase"],
     category: "Management System",
+    loginCredentials: {
+      email: "demo@test.com",
+      password: "123456",
+    },
   },
   {
     id: "royal-barbers-booking-system",
@@ -63,6 +83,10 @@ export const featuredProjects = [
     github: "https://github.com/aymantarek16/fullstack-baber-shop",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
     category: "Booking System",
+    loginCredentials: {
+      email: "admin@gmail.com",
+      password: "123123",
+    },
   },
 
   {
@@ -81,6 +105,9 @@ export const featuredProjects = [
       "Firestore",
     ],
     category: "Social Platform",
+    loginCredentials: {
+      note: "Sign in with any Google account or create a new account",
+    },
   },
   {
     id: "flavre-ecommerce",

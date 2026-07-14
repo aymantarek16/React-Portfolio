@@ -16,6 +16,40 @@ const ProjectAction = ({ href, children, variant = "primary" }) => (
   </a>
 );
 
+const LoginCredentials = ({ credentials }) => {
+  if (!credentials) return null;
+
+  if (credentials.note) {
+    return (
+      <div className="login-credentials">
+        <div className="credentials-note">
+          <span className="credentials-icon">🔓</span>
+          <span>{credentials.note}</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="login-credentials">
+      <div className="credentials-header">
+        <span className="credentials-icon">🔐</span>
+        <span>Demo Credentials</span>
+      </div>
+      <div className="credentials-body">
+        <div className="credential-item">
+          <span className="credential-label">Email:</span>
+          <span className="credential-value">{credentials.email}</span>
+        </div>
+        <div className="credential-item">
+          <span className="credential-label">Password:</span>
+          <span className="credential-value">{credentials.password}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ProjectCard = ({ project, index }) => (
   <motion.article
     className="work-card"
@@ -63,6 +97,10 @@ const ProjectCard = ({ project, index }) => (
           Code
         </ProjectAction>
       </div>
+
+      {project.loginCredentials && (
+        <LoginCredentials credentials={project.loginCredentials} />
+      )}
     </div>
   </motion.article>
 );
@@ -103,6 +141,10 @@ const SpotlightProject = ({ project, totalProjects }) => (
           View Source
         </ProjectAction>
       </div>
+
+      {project.loginCredentials && (
+        <LoginCredentials credentials={project.loginCredentials} />
+      )}
     </div>
   </motion.article>
 );
