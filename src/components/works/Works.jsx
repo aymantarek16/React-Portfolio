@@ -16,6 +16,25 @@ const ProjectAction = ({ href, children, variant = "primary" }) => (
   </a>
 );
 
+const DescriptionTooltip = ({ children, content }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <span
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+      style={{ position: 'relative', cursor: 'help' }}
+    >
+      {children}
+      {isVisible && (
+        <div className="description-tooltip">
+          {content}
+        </div>
+      )}
+    </span>
+  );
+};
+
 const LoginCredentials = ({ credentials }) => {
   if (!credentials) return null;
 
@@ -83,7 +102,9 @@ const ProjectCard = ({ project, index }) => (
       </div>
 
       <h3>{project.projectTitle}</h3>
-      <p>{project.subTitle}</p>
+      <DescriptionTooltip content={project.subTitle}>
+        <p>{project.subTitle}</p>
+      </DescriptionTooltip>
 
       <div className="work-stack" aria-label={`${project.projectTitle} stack`}>
         {project.techStack.slice(0, 4).map((tech) => (
@@ -127,7 +148,9 @@ const SpotlightProject = ({ project, totalProjects }) => (
     <div className="spotlight-info">
       <span className="spotlight-kicker">{project.category}</span>
       <h3>{project.projectTitle}</h3>
-      <p>{project.subTitle}</p>
+      <DescriptionTooltip content={project.subTitle}>
+        <p>{project.subTitle}</p>
+      </DescriptionTooltip>
 
       <div className="spotlight-stack" aria-label={`${project.projectTitle} stack`}>
         {project.techStack.map((tech) => (

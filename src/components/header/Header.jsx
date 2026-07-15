@@ -4,7 +4,7 @@ import "./header.css";
 const navItems = [
   { href: "#hero", label: "Home" },
   { href: "#projects", label: "Work" },
-  { href: "#services", label: "Services" },
+  // { href: "#services", label: "Services" },
   { href: "#contact", label: "Contact" },
 ];
 

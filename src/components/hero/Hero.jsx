@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SocialIcon from "../SocialIcon";
+import { featuredProjects } from "../works/ProjectsData";
 import "./hero.css";
 
 const socials = [
@@ -10,7 +11,7 @@ const socials = [
 ];
 
 const metrics = [
-  { value: "20+", label: "Completed Projects" },
+  { value: featuredProjects.length, label: "Completed Projects" },
   { value: "4+", label: "Years" },
   { value: "90+", label: "Performance" },
 ];

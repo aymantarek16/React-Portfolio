@@ -837,3 +837,54 @@
     padding: 0.24rem 0.45rem;
   }
 }
+
+.description-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 44%),
+    rgba(13, 17, 29, 0.92);
+  border: 1px solid var(--border-primary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(93, 242, 214, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--title-primary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  animation: tooltipFadeIn 0.2s ease-out;
+  pointer-events: none;
+  white-space: normal;
+  z-index: 100;
+}
+
+.light .description-tooltip {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.88)),
+    var(--surface);
+  border-color: var(--border-primary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(93, 242, 214, 0.15);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 760px) {
+  .description-tooltip {
+    display : none
+  }
+}
