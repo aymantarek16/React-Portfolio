@@ -15,9 +15,9 @@ export const featuredProjects = [
     },
   },
   {
-  id: "hireflow-crm",
-  projectTitle: "HireFlow CRM",
-  subTitle:
+    id: "hireflow-crm",
+    projectTitle: "HireFlow CRM",
+    subTitle:
     "A modern recruitment CRM and applicant tracking system (ATS) that streamlines the hiring process with candidate management, job postings, hiring pipeline, role-based dashboards, authentication, and a responsive, user-friendly interface.",
   imgPath: "./Projects images/HireFlow_CRM.png",
   liveDemo: "https://hire-flow-crm.vercel.app/",
@@ -29,11 +29,26 @@ export const featuredProjects = [
     password: "admin123123",
   },
 },
-  {
-    id: "flexops-erp",
-    projectTitle: "FlexOps ERP",
+{
+  id: "car-care",
+  projectTitle: "Car Care",
+  subTitle:
+  "ERP system for automotive workshops featuring customer management, visit history, service management, inventory tracking for spare parts and oils, and invoice printing.",
+  imgPath: "./Projects images/carcare.png",
+  liveDemo: "https://car-care-pi.vercel.app/login",
+  github: "https://github.com/aymantarek16/car-care",
+  techStack: ["Next.js", "JavaScript", "Tailwind CSS", "Firebase"],
+  category: "ERP",
+  loginCredentials: {
+    email: "demo@test.com",
+    password: "123456",
+  },
+},
+{
+  id: "flexops-erp",
+  projectTitle: "FlexOps ERP",
     subTitle:
-      "A customizable Arabic ERP dashboard for managing customers, orders, invoices, expenses, reports, and business workflows. Designed as a SaaS-style business management system that can be adapted for clinics, gyms, restaurants, retail stores, and service companies.",
+      "Customizable Arabic ERP dashboard for managing customers, orders, invoices, expenses, reports, and business workflows. Designed as a SaaS-style business management system that can be adapted for clinics, gyms, restaurants, retail stores, and service companies.",
     imgPath: "./Projects images/FlexOps ERP.png",
     liveDemo: "https://flex-ops-erp.vercel.app/",
     github: "https://github.com/aymantarek16/FlexOps-ERP",
@@ -57,21 +72,6 @@ export const featuredProjects = [
     loginCredentials: {
       email: "demo@brandedinvoice.com",
       password: "demo123456",
-    },
-  },
-  {
-    id: "car-care",
-    projectTitle: "Car Care",
-    subTitle:
-      "Modern workshop and car service management system built for automotive service centers. Features customer management, service tracking, vehicle records, barcode generation and printing, dashboard analytics, workshop workflow management, secure authentication, and responsive dark-themed UI for seamless operations.",
-    imgPath: "./Projects images/carcare.png",
-    liveDemo: "https://car-care-pi.vercel.app/login",
-    github: "https://github.com/aymantarek16/car-care",
-    techStack: ["Next.js", "JavaScript", "Tailwind CSS", "Firebase"],
-    category: "Management System",
-    loginCredentials: {
-      email: "demo@test.com",
-      password: "123456",
     },
   },
   {
